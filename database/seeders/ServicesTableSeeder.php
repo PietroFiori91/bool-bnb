@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class serviceTableSeeder extends Seeder
+class servicesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,7 +22,7 @@ class serviceTableSeeder extends Seeder
             ],
             [
                 'name' => 'Fornelli',
-                'description' => 'Fornelli a induzzione',
+                'description' => 'Fornelli a induzione',
                 'icon' => 'fa-fire-burner',
             ],
             [
