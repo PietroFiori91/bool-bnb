@@ -27,7 +27,7 @@ Route::post("/apartment", [ApartmentController::class,"store"])->name("apartment
 
 // READ 
 // route index
-Route::get("/apartment", [ComicController::class,"index"])->name("comic.index");
+Route::get("/apartment", [ApartmentController::class,"index"])->name("apartment.index");
 // route show 
 Route::get("/apartment/{apartment}", [ApartmentController::class,"show"])->name("apartment.show");
 
@@ -35,7 +35,7 @@ Route::get("/apartment/{apartment}", [ApartmentController::class,"show"])->name(
 // Mostra un form dove l'utente può fare modifiche 
 Route::get("/apartment/{id}/edit",[ApartmentController::class,"edit"])->name("apartment.edit");
 // la route dell'update posso chiamarla in put o path è indifferente, questa rotta riceverà i dati di edit e aggiornare l'elemento nel database a differenza dello store che crea l'elemento
-Route::put("/comic/{id}", [ApartmentController::class,"update"])->name("apartment.update");
+Route::put("/apartment/{id}", [ApartmentController::class,"update"])->name("apartment.update");
 
 // DESTROY 
 Route::delete("/apartment/{id}",[ApartmentController::class, "destroy"])->name("apartment.destroy");
