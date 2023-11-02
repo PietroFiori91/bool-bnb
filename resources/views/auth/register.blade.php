@@ -44,7 +44,7 @@
                             <label for="date-of-birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="date-of-birth" type="date" class="form-control @error('date-of-birth') is-invalid @enderror" name="date-of-birth" value="{{ old('date-of-birth') }}" required autocomplete="date-of-birth" autofocus>
+                                <input id="date-of-birth" type="date" class="form-control @error('date-of-birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date-of-birth') }}" required autocomplete="date-of-birth" autofocus>
 
                                 @error('date-of-birth')
                                 <span class="invalid-feedback" role="alert">
