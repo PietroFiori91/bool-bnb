@@ -14,7 +14,7 @@ class ApartmentController extends Controller
     {
         $apartments = Apartment::all();
         // indirizza i nostri dati alla view index 
-        return view("admin.apartment.index", ["apartments" => $apartments]);
+        return view("admin.apartments.index", ["apartments" => $apartments]);
     }
 
     /**
@@ -22,7 +22,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.apartment.create');
+        return view('admin.apartments.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class ApartmentController extends Controller
      */
     public function show(string $id)
     {
-        return view('apartment.show');
+        return view('admin.apartments.show', ['apartment' => '$apartaments']);
     }
 
     /**
@@ -66,6 +66,10 @@ class ApartmentController extends Controller
      */
     public function edit(string $id)
     {
+    $apartments = Apartment::findOrDail($id);
+    return view('admin.apartments.edit',  ['apartment' => $apartments]);
+
+    
         //
     }
 
@@ -74,7 +78,26 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validate = $request->validate([
+            'name' => 'required|string',
+            'address' => "required|string",
+            'description' => 'required|string',
+            'room' => 'required|integer',
+            'bed' => 'required|integer',
+            'bathroom' => 'required|integer',
+            'mq' => 'required|integer',
+            'latitude' => 'required|string|max:20',
+            'longitude' => 'required|string|max:20',
+            'visibility' => 'required|boolean',
+            'availability' => 'required|boolean'
+        ]);
+
+        $apartments = Apartment::finOrFail($id);
+        $apartments ->update($validate);
+
+        return redirect()->route('admin.apartemnts.show' , ['apartement' => $apartments])
+        ->with('success' , 'Appartamento aggiornato con sucesso');
+
     }
 
     /**
@@ -85,7 +108,7 @@ class ApartmentController extends Controller
         $apartment = Apartment::findOrFail($id);
         $apartment->delete();
 
-        return redirect()->route('admin.apartment.index')
+        return redirect()->route('admin.apartments.index')
         ->with('success', 'Appartamento eliminato con successo!');
     }
 }
