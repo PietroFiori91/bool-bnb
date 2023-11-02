@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
-      
+
         // indirizza i nostri dati alla view index 
         return view("apartment.index", ["apartments" => $apartments]);
     }
@@ -45,8 +46,6 @@ class ApartmentController extends Controller
             'visibility' => 'required|boolean',
             'availability' => 'required|boolean'
         ]);
-
-        
     }
 
 
@@ -80,5 +79,10 @@ class ApartmentController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showMap()
+    {
+        return view('apartment.map');
     }
 }

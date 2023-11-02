@@ -19,6 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/apartment/map', 'ApartmentController@showMap')->name('apartment.map');
+Route::resource('apartments', 'Admin\ApartmentController');
+Route::get('apartments/{id}/map', 'Admin\ApartmentController@showMap')->name('apartments.map');
+
+
 
 
 // CREATE 
@@ -50,6 +55,6 @@ Route::middleware('auth')
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    });
 
 require __DIR__ . '/auth.php';
