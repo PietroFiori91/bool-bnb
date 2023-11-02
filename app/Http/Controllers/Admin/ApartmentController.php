@@ -23,7 +23,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('apartment.create');
     }
 
     /**
@@ -31,8 +31,24 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+
+            'name' => 'required|string',
+            'address' => "required|string",
+            'description' => 'required|string',
+            'room' => 'required|integer',
+            'bed' => 'required|integer',
+            'bathroom' => 'required|integer',
+            'mq' => 'required|integer',
+            'latitude' => 'required|string|max:20',
+            'longitude' => 'required|string|max:20',
+            'visibility' => 'required|boolean',
+            'availability' => 'required|boolean'
+        ]);
+
+        
     }
+
 
     /**
      * Display the specified resource.
