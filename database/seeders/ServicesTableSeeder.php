@@ -118,8 +118,8 @@ class servicesTableSeeder extends Seeder
         foreach ($servicesData as $serviceData) {
             $newService = new Service();
             $newService -> name = $serviceData['name'];
-            $newService -> description_data = $serviceData['description'];
-            $newService -> icon_service =  $serviceData['icon'];
+            $newService -> description = $serviceData['description'];
+            $newService -> icon =  $serviceData['icon'];
             $newService -> save();
         }
     }
