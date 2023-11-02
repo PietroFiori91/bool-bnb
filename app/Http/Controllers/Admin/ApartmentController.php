@@ -55,7 +55,7 @@ class ApartmentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('apartment.show');
     }
 
     /**
