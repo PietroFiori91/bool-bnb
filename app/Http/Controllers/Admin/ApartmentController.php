@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
+use App\Models\Apartment;
 use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
@@ -12,7 +12,10 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+        $apartments = Apartment::all();
+      
+        // indirizza i nostri dati alla view index 
+        return view("apartment.index", ["apartments" => $apartments]);
     }
 
     /**
