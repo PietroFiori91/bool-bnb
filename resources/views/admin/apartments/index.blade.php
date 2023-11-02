@@ -29,4 +29,9 @@
                 @endforeach
             </div>
         </div>
+
+        <div class="container py-5 mx-auto d-flex justify-content-center">
+            <a href="/" class="btn btn-primary btn-lg" type="button">Torna in Home</a>
+        </div>
+    </div>
     @endsection
