@@ -15,7 +15,7 @@ class ApartmentController extends Controller
         $apartments = Apartment::all();
       
         // indirizza i nostri dati alla view index 
-        return view("apartment.index", ["apartments" => $apartments]);
+        return view("admin.apartments.index", ["apartments" => $apartments]);
     }
 
     /**
@@ -23,7 +23,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('apartment.create');
+        return view('admin.apartments.create');
     }
 
     /**
