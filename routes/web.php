@@ -22,24 +22,24 @@ Route::get('/', function () {
 
 
 // CREATE 
-Route::get("/apartment/create", [ApartmentController::class,"create"])->name("apartment.create");
-Route::post("/apartment", [ApartmentController::class,"store"])->name("apartment.store");
+Route::get("/apartment/create", [ApartmentController::class, "create"])->name("apartment.create");
+Route::post("/apartment", [ApartmentController::class, "store"])->name("apartment.store");
 
 
 // READ 
 // route index
-Route::get("/apartment", [ApartmentController::class,"index"])->name("apartment.index");
+Route::get("/apartment", [ApartmentController::class, "index"])->name("apartment.index");
 // route show 
-Route::get("/apartment/{apartment}", [ApartmentController::class,"show"])->name("apartment.show");
+Route::get("/apartment/{apartment}", [ApartmentController::class, "show"])->name("apartment.show");
 
 // UPDATE 
 // Mostra un form dove l'utente può fare modifiche 
-Route::get("/apartment/{id}/edit",[ApartmentController::class,"edit"])->name("apartment.edit");
+Route::get("/apartment/{id}/edit", [ApartmentController::class, "edit"])->name("apartment.edit");
 // la route dell'update posso chiamarla in put o path è indifferente, questa rotta riceverà i dati di edit e aggiornare l'elemento nel database a differenza dello store che crea l'elemento
-Route::put("/apartment/{id}", [ApartmentController::class,"update"])->name("apartment.update");
+Route::put("/apartment/{id}", [ApartmentController::class, "update"])->name("apartment.update");
 
 // DESTROY 
-Route::delete("/apartment/{id}",[ApartmentController::class, "destroy"])->name("apartment.destroy");
+Route::delete("/apartment/{id}", [ApartmentController::class, "destroy"])->name("apartment.destroy");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -51,4 +51,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
