@@ -9,8 +9,8 @@
 
         <p><strong>Description:</strong> {{ $apartment->description }}</p>
         <p><strong>Address:</strong> {{ $apartment->address }}</p>
-        <p><strong>Number of Rooms:</strong> {{ $apartment->room }}</p>
-        <p><strong>Number of Beds:</strong> {{ $apartment->bed }}</p>
+        <p><strong>Rooms:</strong> {{ $apartment->room }}</p>
+        <p><strong>Beds:</strong> {{ $apartment->bed }}</p>
 
         <a href="{{ route('apartments.index') }}" class="btn btn-primary">Back to List</a>
     </div>
