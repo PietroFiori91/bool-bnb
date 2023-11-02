@@ -19,12 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/apartment/map', 'ApartmentController@showMap')->name('apartment.map');
-Route::resource('apartments', 'Admin\ApartmentController');
-Route::get('apartments/{id}/map', 'Admin\ApartmentController@showMap')->name('apartments.map');
-
-
-
 
 // CREATE 
 Route::get("/apartment/create", [ApartmentController::class, "create"])->name("apartment.create");

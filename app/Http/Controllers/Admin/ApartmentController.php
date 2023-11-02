@@ -80,9 +80,4 @@ class ApartmentController extends Controller
     {
         //
     }
-
-    public function showMap()
-    {
-        return view('apartment.map');
-    }
 }
