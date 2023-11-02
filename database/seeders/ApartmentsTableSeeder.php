@@ -10,50 +10,51 @@ class ApartmentsTableSeeder extends Seeder
 {
     private $apartments = [
         [
-            'name' => 'villa maria',
-            'address' => 'via sadas',
+            'name' => 'villa Maria',
+            'address' => 'via Magolfa, 18/A - Milano | 20143',
             'description' => 'descrizione 1',
             'room' => 10,
             'bed' => 20,
             'bathroom' => 1,
             'mq' => 250,
-            'latitude' => '42°46\'12.1"N',
-            'longitude' => '10°51\'12.6"E',
-            'visibility' => true, 
+            'latitude' => '45.45057902370618',
+            'longitude' => '9.176100308949913',
+            'visibility' => true,
             'availability' => true,
         ],
         [
-            'name' => 'villa gemma',
-            'address' => 'via santa',
+            'name' => 'villa Gemma',
+            'address' => 'via XX Settembre, 24 - Milano | 20123',
             'description' => 'descrizione 2',
             'room' => 4,
             'bed' => 5,
             'bathroom' => 4,
             'mq' => 250,
-            'latitude' => '42°47\'13.1"N',
-            'longitude' => '10°81\'17.6"E',
-            'visibility' => true, 
+            'latitude' => '45.46804637189171',
+            'longitude' => '9.16693787225847',
+            'visibility' => true,
             'availability' => false,
         ],
         [
-            'name' => 'villa smeralda',
-            'address' => 'via dsasadgasg',
+            'name' => 'villa Smeralda',
+            'address' => 'via Sebastiano del Piombo, 18 -Milano | 20149',
             'description' => 'descrizione 3',
             'room' => 8,
             'bed' => 8,
             'bathroom' => 8,
             'mq' => 500,
-            'latitude' => '42°46\'12.1"N',
-            'longitude' => '10°21\'12.6"E',
-            'visibility' => true, 
+            'latitude' => '45.47762181037545',
+            'longitude' => '9.14870518243592',
+            'visibility' => true,
             'availability' => true,
         ],
-        ];
+    ];
     /**
      * Run the database seeds.
      * 
      */
-    public function run(): void {
+    public function run(): void
+    {
 
         // $apartments = config('apartments');
 
@@ -71,11 +72,10 @@ class ApartmentsTableSeeder extends Seeder
             $newApartment->longitude = $apartment['longitude'];
             $newApartment->visibility = $apartment['visibility'];
             $newApartment->availability = $apartment['availability'];
-    
-            // $newApartment->slug = Apartment::generateSlug($newApartment->name);
-    
-            $newApartment->save();
 
+            // $newApartment->slug = Apartment::generateSlug($newApartment->name);
+
+            $newApartment->save();
         }
     }
 }
