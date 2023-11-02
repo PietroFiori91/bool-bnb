@@ -13,9 +13,8 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
-      
         // indirizza i nostri dati alla view index 
-        return view("apartment.index", ["apartments" => $apartments]);
+        return view("admin.apartment.index", ["apartments" => $apartments]);
     }
 
     /**
@@ -23,7 +22,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('apartment.create');
+        return view('admin.apartment.create');
     }
 
     /**
@@ -46,6 +45,10 @@ class ApartmentController extends Controller
             'availability' => 'required|boolean'
         ]);
 
+        $apartment = Apartment::created($validate);
+
+        return redirect() ->route('.index')
+        ->with('seccess' , 'Apartamento cancellato ');
         
     }
 
@@ -79,6 +82,10 @@ class ApartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $apartment->delete();
+
+        return redirect()->route('admin.apartment.index')
+        ->with('success', 'Appartamento eliminato con successo!');
     }
 }
