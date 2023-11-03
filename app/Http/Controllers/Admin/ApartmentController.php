@@ -43,30 +43,12 @@ class ApartmentController extends Controller
             'mq' => 'required|numeric',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
-            'visibility' => [
-                'required',
-                Rule::in(['yes', 'no'])
-            ],
-            'availability' => [
-                'required',
-                Rule::in(['available', 'not_available'])
-            ],
+            'visibility' => 'nullable|boolean',
+            'availability' => 'nullable|boolean'
         ]);
 
         $newApartment = new Apartment();
-
-        $newApartment->name = $data['name'];
-        $newApartment->address = $data['address'];
-        $newApartment->description = $data['description'];
-        $newApartment->room = $data['room'];
-        $newApartment->bed = $data['bed'];
-        $newApartment->bathroom = $data['bathroom'];
-        $newApartment->mq = $data['mq'];
-        $newApartment->latitude = $data['latitude'];
-        $newApartment->longitude = $data['longitude'];
-        $newApartment->visibility = $data['visibility'];
-        $newApartment->availability = $data['availability'];
-
+        $newApartment->fill($data);
         $newApartment->save();
 
         return redirect()->route("admin.apartments.index");
