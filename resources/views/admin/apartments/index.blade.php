@@ -6,12 +6,20 @@
             <div class="row cols-4 d-flex justify-content-center">
                 @foreach ($apartments as $apartment)
                     <div class="col p-2">
-                        <div class="card rounded-0">
+                        <div class="card rounded-0" style="w">
 
                             <div class="card">
+                                <div class="row mt-2 d-flex ">
+                                    <div class="col">
+                                        <a href="{{ route('admin.apartments.create', $apartment->id) }}"><button
+                                                class="btn btn-primary">Aggiungi</button></a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="{{ route('admin.apartments.edit', $apartment->id) }}"><button
+                                                class="btn btn-primary">Modifica</button></a>
+                                    </div>
+                                </div>
 
-
-                                <a href="{{ route('admin.apartments.edit', $apartment->id) }}"><button>Modifica</button></a>
                                 <div class="series">
                                     <a href="/admin/apartments/{{ $apartment->id }}">
                                         <h1>{{ $apartment['name'] }}</h1>
@@ -44,6 +52,7 @@
 
         <div class="container py-5 mx-auto d-flex justify-content-center">
             <a href="/" class="btn btn-primary btn-lg" type="button">Torna in Home</a>
+            <a href="{{ route('admin.apartments.create') }}"><button class="btn btn-primary btn-lg mx-1">Nuovo appartamento</button></a>
         </div>
     </div>
 @endsection
