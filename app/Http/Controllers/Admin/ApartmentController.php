@@ -89,15 +89,15 @@ class ApartmentController extends Controller
             'bed' => 'required|integer',
             'bathroom' => 'required|integer',
             'mq' => 'required|numeric',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
             'visibility' => [
                 'required',
-                Rule::in(['yes', 'no'])
+                Rule::in(['1', '0'])
             ],
             'availability' => [
                 'required',
-                Rule::in(['available', 'not_available'])
+                Rule::in(['1', '0'])
             ],
         ]);
 
