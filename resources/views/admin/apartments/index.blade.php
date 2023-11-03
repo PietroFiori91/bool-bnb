@@ -13,7 +13,7 @@
 
                                 <a href="{{ route('admin.apartments.edit', $apartment->id) }}"><button>Modifica</button></a>
                                 <div class="series">
-                                    <a href="/apartments/{{ $apartment->id }}">
+                                    <a href="/admin/apartments/{{ $apartment->id }}">
                                         <h1>{{ $apartment['name'] }}</h1>
                                     </a>
 
