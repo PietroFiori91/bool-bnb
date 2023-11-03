@@ -32,26 +32,28 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $data = $request->all();
 
-            'name' => 'required|string',
-            'address' => "required|string",
-            'description' => 'required|string',
-            'room' => 'required|integer',
-            'bed' => 'required|integer',
-            'bathroom' => 'required|integer',
-            'mq' => 'required|integer',
-            'latitude' => 'required|string|max:20',
-            'longitude' => 'required|string|max:20',
-            'visibility' => 'required|boolean',
-            'availability' => 'required|boolean'
-        ]);
+        $newApartment= new Apartment();
 
-        $apartment = Apartment::created($validate);
+        $newApartment->name = $data['name'];
+            $newApartment->address = $data['address'];
+            $newApartment->description = $data['description'];
+            $newApartment->room = $data['room'];
+            $newApartment->bed = $data['bed'];
+            $newApartment->bathroom = $data['bathroom'];
+            $newApartment->mq = $data['mq'];
+            $newApartment->latitude = $data['latitude'];
+            $newApartment->longitude = $data['longitude'];
+            $newApartment->visibility = $data['visibility'];
+            $newApartment->availability = $data['availability'];
 
-        return redirect() ->route('.index')
-        ->with('seccess' , 'Apartamento cancellato ');
+       
         
+        $newApartment->save();
+
+       
+        return redirect()->route("admin.apartments.index");
     }
 
 
@@ -60,7 +62,8 @@ class ApartmentController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.apartments.show', ['apartment' => '$apartaments']);
+        $apartment = Apartment::findOrFail($id);
+        return view("admin.apartments.show", compact("apartments"));
     }
 
     /**
@@ -68,10 +71,10 @@ class ApartmentController extends Controller
      */
     public function edit(string $id)
     {
-    $apartments = Apartment::findOrDail($id);
-    return view('admin.apartments.edit',  ['apartment' => $apartments]);
+        $apartments = Apartment::findOrDail($id);
+        return view('admin.apartments.edit',  ['apartment' => $apartments]);
 
-    
+
         //
     }
 
@@ -95,11 +98,10 @@ class ApartmentController extends Controller
         ]);
 
         $apartments = Apartment::finOrFail($id);
-        $apartments ->update($validate);
+        $apartments->update($validate);
 
-        return redirect()->route('admin.apartemnts.show' , ['apartement' => $apartments])
-        ->with('success' , 'Appartamento aggiornato con sucesso');
-
+        return redirect()->route('admin.apartemnts.show', ['apartement' => $apartments])
+            ->with('success', 'Appartamento aggiornato con sucesso');
     }
 
     /**
@@ -111,7 +113,7 @@ class ApartmentController extends Controller
         $apartment->delete();
 
         return redirect()->route('admin.apartments.index')
-        ->with('success', 'Appartamento eliminato con successo!');
+            ->with('success', 'Appartamento eliminato con successo!');
     }
 
     public function showMap()
