@@ -56,7 +56,6 @@ class ApartmentController extends Controller
         return redirect()->route("admin.apartments.index");
     }
 
-
     /**
      * Display the specified resource.
      */
@@ -114,10 +113,5 @@ class ApartmentController extends Controller
 
         return redirect()->route('admin.apartments.index')
             ->with('success', 'Appartamento eliminato con successo!');
-    }
-
-    public function showMap()
-    {
-        return view('apartment.map');
     }
 }

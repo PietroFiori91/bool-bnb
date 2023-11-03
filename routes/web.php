@@ -34,7 +34,7 @@ Route::middleware(["auth", "verified"])
         Route::get("/apartments/{id}/edit", [ApartmentController::class, "edit"])->name("apartments.edit");           //UPDATE
         Route::put("/apartments/{id}", [ApartmentController::class, "update"])->name("apartments.update");
         Route::delete("/apartments/{id}", [ApartmentController::class, "destroy"])->name("apartments.destroy");       //DESTROY
-// la route dell'update posso chiamarla in put o path è indifferente, questa rotta riceverà i dati di edit e aggiornare l'elemento nel database a differenza dello store che crea l'elemento
+        // la route dell'update posso chiamarla in put o path è indifferente, questa rotta riceverà i dati di edit e aggiornare l'elemento nel database a differenza dello store che crea l'elemento
     });
 
 Route::get('/dashboard', function () {
