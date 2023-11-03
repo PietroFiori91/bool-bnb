@@ -62,7 +62,7 @@ class ApartmentController extends Controller
     public function show(string $id)
     {
         $apartment = Apartment::findOrFail($id);
-        return view("admin.apartments.show", compact("apartments"));
+        return view("admin.apartments.show", compact("apartment"));
     }
 
     /**
@@ -70,8 +70,8 @@ class ApartmentController extends Controller
      */
     public function edit(string $id)
     {
-        $apartments = Apartment::findOrDail($id);
-        return view('admin.apartments.edit',  ['apartment' => $apartments]);
+        $apartments = Apartment::findOrFail($id);
+        return view('admin.apartments.edit',  ['apartments' => $apartments]);
 
 
         //
@@ -82,25 +82,10 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validate = $request->validate([
-            'name' => 'required|string',
-            'address' => "required|string",
-            'description' => 'required|string',
-            'room' => 'required|integer',
-            'bed' => 'required|integer',
-            'bathroom' => 'required|integer',
-            'mq' => 'required|integer',
-            'latitude' => 'required|string|max:20',
-            'longitude' => 'required|string|max:20',
-            'visibility' => 'required|boolean',
-            'availability' => 'required|boolean'
-        ]);
-
-        $apartments = Apartment::finOrFail($id);
-        $apartments->update($validate);
-
-        return redirect()->route('admin.apartemnts.show', ['apartement' => $apartments])
-            ->with('success', 'Appartamento aggiornato con sucesso');
+        $apartment = Apartment::findOrFail($id);
+        $data = $request->all();
+        $apartment->update($data);
+        return redirect()->route("admin.apartments.show", $apartment->id);
     }
 
     /**

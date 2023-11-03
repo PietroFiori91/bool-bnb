@@ -16,7 +16,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Indirizzo:</label>
-                        <input class="form-control" id="exampleFormControlTextarea1" name="address" rows="">
+                        <input class="form-control" id="exampleFormControlTextarea1" name="address">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Numero camere:</label>
