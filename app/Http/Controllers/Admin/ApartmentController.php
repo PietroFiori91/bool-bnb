@@ -33,7 +33,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-
+            
             'name' => 'required|string',
             'address' => "required|string",
             'description' => 'required|string',
@@ -45,15 +45,16 @@ class ApartmentController extends Controller
             'longitude' => 'required|string|max:20',
             'visibility' => 'required|boolean',
             'availability' => 'required|boolean'
+            
         ]);
 
-        $apartment = Apartment::created($validate);
+        
+        $apartment = Apartment::create($validate);
 
-        return redirect() ->route('.index')
-        ->with('seccess' , 'Apartamento cancellato ');
+        return redirect() ->route('admin.apartments.index')
+        ->with('success' , 'Apartamento cancellato ');
         
     }
-
 
     /**
      * Display the specified resource.
