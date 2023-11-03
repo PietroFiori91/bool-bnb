@@ -12,6 +12,6 @@
         <p><strong>Rooms:</strong> {{ $apartment->room }}</p>
         <p><strong>Beds:</strong> {{ $apartment->bed }}</p>
 
-        <a href="{{ route('apartments.index') }}" class="btn btn-primary">Back to List</a>
+        <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary">Back to List</a>
     </div>
 @endsection
