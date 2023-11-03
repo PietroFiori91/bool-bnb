@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class ApartmentController extends Controller
@@ -14,10 +16,11 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $apartments = Apartment::all();
 
         // indirizza i nostri dati alla view index 
-        return view("admin.apartments.index", ["apartments" => $apartments]);
+        return view("admin.apartments.index",compact("apartments"));
     }
 
     /**
@@ -41,15 +44,14 @@ class ApartmentController extends Controller
             'bed' => 'required|integer',
             'bathroom' => 'required|integer',
             'mq' => 'required|numeric',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
             'visibility' => 'nullable|boolean',
             'availability' => 'nullable|boolean'
         ]);
 
-        $newApartment = new Apartment();
-        $newApartment->fill($data);
-        $newApartment->save();
+      
+        $apartment = Apartment::create($data);
 
         return redirect()->route("admin.apartments.index");
     }
