@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ApartmentController extends Controller
 {
@@ -32,27 +33,42 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string',
+            'room' => 'required|integer',
+            'bed' => 'required|integer',
+            'bathroom' => 'required|integer',
+            'mq' => 'required|numeric',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'visibility' => [
+                'required',
+                Rule::in(['yes', 'no'])
+            ],
+            'availability' => [
+                'required',
+                Rule::in(['available', 'not_available'])
+            ],
+        ]);
 
-        $newApartment= new Apartment();
+        $newApartment = new Apartment();
 
         $newApartment->name = $data['name'];
-            $newApartment->address = $data['address'];
-            $newApartment->description = $data['description'];
-            $newApartment->room = $data['room'];
-            $newApartment->bed = $data['bed'];
-            $newApartment->bathroom = $data['bathroom'];
-            $newApartment->mq = $data['mq'];
-            $newApartment->latitude = $data['latitude'];
-            $newApartment->longitude = $data['longitude'];
-            $newApartment->visibility = $data['visibility'];
-            $newApartment->availability = $data['availability'];
+        $newApartment->address = $data['address'];
+        $newApartment->description = $data['description'];
+        $newApartment->room = $data['room'];
+        $newApartment->bed = $data['bed'];
+        $newApartment->bathroom = $data['bathroom'];
+        $newApartment->mq = $data['mq'];
+        $newApartment->latitude = $data['latitude'];
+        $newApartment->longitude = $data['longitude'];
+        $newApartment->visibility = $data['visibility'];
+        $newApartment->availability = $data['availability'];
 
-       
-        
         $newApartment->save();
 
-       
         return redirect()->route("admin.apartments.index");
     }
 
@@ -70,8 +86,8 @@ class ApartmentController extends Controller
      */
     public function edit(string $id)
     {
-        $apartments = Apartment::findOrFail($id);
-        return view('admin.apartments.edit',  ['apartments' => $apartments]);
+        $apartment = Apartment::findOrFail($id);
+        return view('admin.apartments.edit',  ['apartments' => $apartment]);
 
 
         //
@@ -83,7 +99,26 @@ class ApartmentController extends Controller
     public function update(Request $request, string $id)
     {
         $apartment = Apartment::findOrFail($id);
-        $data = $request->all();
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string',
+            'room' => 'required|integer',
+            'bed' => 'required|integer',
+            'bathroom' => 'required|integer',
+            'mq' => 'required|numeric',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'visibility' => [
+                'required',
+                Rule::in(['yes', 'no'])
+            ],
+            'availability' => [
+                'required',
+                Rule::in(['available', 'not_available'])
+            ],
+        ]);
+
         $apartment->update($data);
         return redirect()->route("admin.apartments.show", $apartment->id);
     }
