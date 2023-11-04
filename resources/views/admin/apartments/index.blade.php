@@ -25,6 +25,11 @@
                         <div class="p-2 mt-2 d-flex justify-content-center">
                             <a href="{{ route('admin.apartments.edit', $apartment->id) }}">
                                 <button class="btn btn-md m-2 btn-primary">Modifica</button></a>
+                            <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST">
+                                @csrf()
+                                @method('DELETE')
+                                <button class="btn btn-btn-md m-2 btn-danger" type="submit" name="name">Elimina</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach
