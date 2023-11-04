@@ -18,6 +18,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div class="container py-5">
+                        <a href="/admin/apartments" class="btn btn-primary btn-lg" type="button">index</a>
+                    </div>
                 </div>
             </div>
         </div>
