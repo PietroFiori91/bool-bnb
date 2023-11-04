@@ -37,12 +37,13 @@ class Apartment extends Model
     {
         return $this->hasMany(Message::class);
     }
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     protected $fillable = [
+        "user_id",
         'name',
         'address',
         'description',
