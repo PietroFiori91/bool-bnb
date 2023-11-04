@@ -17,8 +17,8 @@ class ApartmentController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $apartments = $user->apartments;
         $apartments = Apartment::all();
-
         // indirizza i nostri dati alla view index 
         return view("admin.apartments.index",compact("apartments"));
     }
@@ -37,6 +37,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'address' => 'required|string',
@@ -50,6 +51,8 @@ class ApartmentController extends Controller
             'availability' => 'nullable|boolean'
         ]);
 
+        $currentUser = Auth::user();
+        $data["user_id"] = $currentUser->id;
       
         $apartment = Apartment::create($data);
 
