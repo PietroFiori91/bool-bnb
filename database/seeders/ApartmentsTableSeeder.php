@@ -50,7 +50,7 @@ class ApartmentsTableSeeder extends Seeder
             "room" => 3,
             "bed" => 3,
             "bathroom" => 1,
-            "mq" => 120,
+            "mq" => 220,
             "latitude" => '37°40\'52.6"N',
             "longitude" => '122°29\'04.9"W',
             "visibility" => true,
@@ -58,7 +58,7 @@ class ApartmentsTableSeeder extends Seeder
         ],
         [
             "name" => "Marbella Lane - Oasi costiera rigenerante",
-            "address" => "399-307 Genevieve Ave, Pacifica, CA, 94044, Stati Uniti",
+            "address" => "307 Genevieve Ave, Pacifica, CA, 94044, Stati Uniti",
             "description" => "Nascosta nella tranquilla e pittoresca valle di Vallemar, questa casa in legno di cedro di Lindahl offre serenità e comodità, con un rapido accesso a molti punti di viaggio. Questa casa ha un elegante design interno dello chalet, l'ampio soggiorno dispone di lucernari e ampie finestre, con accesso diretto alla terrazza del cortile e a una vasca idromassaggio. Goditi una tazza di tè ammirando la miracolosa bellezza della foresta e delle montagne che ti circondano; potresti persino avvistare occasionalmente un cervo o una volpe.",
             "room" => 3,
             "bed" => 4,
@@ -71,7 +71,7 @@ class ApartmentsTableSeeder extends Seeder
         ],
         [
             "name" => "Alloggio di lusso a Del Monte Forest, California, Stati Uniti",
-            "address" => "3100-3198 Patio Dr, Pebble Beach, CA, 93953, Stati Uniti",
+            "address" => "3198 Patio Dr, Pebble Beach, CA, 93953, Stati Uniti",
             "description" => "La foresta di Del Monte ispira la forma di questa residenza contemporanea californiana. Una capanna all'aperto riecheggia le linee rette degli alberi più alti, l'area lounge si estende sotto i rami tortuosi e, all'interno, danze luminose soffuse con le foglie su un tappeto verde muschio e pannelli in legno. 3 campi da golf, tra cui Pebble Beach, e 2 spiagge in 10 minuti ti faranno prendere il via e la sabbia.",
             "room" => 3,
             "bed" => 3,
@@ -84,7 +84,7 @@ class ApartmentsTableSeeder extends Seeder
         ],
         [
             "name" => "Luminoso, moderno 5b/4ba Portola Valley Home",
-            "address" => "144-160 Los Trancos Cir, Portola Valley, CA, 94028, Stati Uniti",
+            "address" => "160 Los Trancos Cir, Portola Valley, CA, 94028, Stati Uniti",
             "description" => "Casa spaziosa e tranquilla nella Valle di Portola. Goditi la vasta terrazza all'aperto, accomodati vicino al camino, ammira gli alberi imponenti attraverso le splendide finestre panoramiche della casa o semplicemente rilassati nello spazio pulito, moderno e completamente arredato. I rinomati sentieri di Portola Valley che si affacciano sulla baia di San Francisco si trovano a soli 100 passi di distanza.",
             "room" => 5,
             "bed" => 5,
@@ -97,7 +97,7 @@ class ApartmentsTableSeeder extends Seeder
         ],
         [
             "name" => "Nature/Architectural Lovers Dream Pad in Sequoie",
-            "address" => "999-731 Lovell Ave, Mill Valley, CA, 94941, Stati Uniti",
+            "address" => "731 Lovell Ave, Mill Valley, CA, 94941, Stati Uniti",
             "description" => "Siamo amanti della natura e abbiamo comprato la casa dei nostri sogni tra le sequoie ai piedi del Monte Tam e ora lo condividiamo con i viaggiatori che apprezzano l'architettura e lo stile di vita all'interno e all'esterno della California settentrionale! Costruita dal visionario architetto biologico Daniel Lieberman nel 1962 su sequoie e vetri secolari, la casa è una composizione piena di spazi aperti ancorati a un camino centrale, simile al lavoro del mentore di Lieberman, Frank Lloyd Wright.",
             "room" => 3,
             "bed" => 2,
@@ -123,7 +123,7 @@ class ApartmentsTableSeeder extends Seeder
         ],
         [
             "name" => "Il cavalluccio marino di Willow Glen",
-            "address" => "2541-2579 Richland Ave, San Jose, CA, 95125, Stati Uniti",
+            "address" => "2579 Richland Ave, San Jose, CA, 95125, Stati Uniti",
             "description" => "In primo piano su Houzz, Style Me Pretty Living e PopSugar, oltre che selezionato per il prestigioso Willow Glen Home Tour, questa casa pluripremiata completamente ristrutturata con un paradiso per il nuoto è stata aperta per le tue vacanze, soggiorni o viaggi di lavoro!
             Dalla scintillante piscina e spa a forma di cavalluccio marino, al pavimento del bagno fatto di pochi centesimi, l'unicità, il comfort e la gioia di questa casa ti lascerà sicuramente sorridente.
             Willow Glen, San Jose è vicino a negozi, cibo e autostrade.",
@@ -151,12 +151,12 @@ class ApartmentsTableSeeder extends Seeder
         ],
         [
             "name" => "Splendido resort californiano e piscina a sfioro",
-            "address" => "590 Ave Alhambra, Half Moon Bay, 94019, CA, Stati Uniti",
+            "address" => "452 W Maple Way, Woodside, CA, 94062, Stati Uniti",
             "description" => "Raggiungi a piedi le migliori spiagge statali della zona, i ristoranti premiati, il porto di Half Moon Bay, le escursioni a piedi lungo il California Coastal Trail, le attività per famiglie nella zona e molto altro ancora.",
-            "room" => 3,
-            "bed" => 9,
-            "bathroom" => 2,
-            "mq" => 3,
+            "room" => 6,
+            "bed" => 6,
+            "bathroom" => 6,
+            "mq" => 800,
             "latitude" => '122°28\'06.8"W',
             "longitude" => '37°30\'06.0"N',
             "visibility" => true,
