@@ -16,7 +16,7 @@ class Message extends Model
         'message'
     ];
     public function apartment(){
-        return $this->hasMany(Apartment::class);
+        return $this->belongsTo(Apartment::class);
     }
     
 }
