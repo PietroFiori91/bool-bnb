@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('guest.welcome');
+    return redirect("http://localhost:5174/");
 });
 
 // // Route::get('/apartment/map', 'ApartmentController@showMap')->name('apartment.map');
