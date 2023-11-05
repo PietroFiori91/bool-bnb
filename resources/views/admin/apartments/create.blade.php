@@ -14,6 +14,17 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Immagini:</label>
+                        <input type="file" class="form-control" name="images[]" multiple>
+                        @foreach ($apartment->images as $image)
+                            <div>
+                                <img src="{{ $image->url }}" alt="{{ $image->name }}" style="max-width: 100px;">
+                                <input type="checkbox" name="images[]" value="{{ $image->id }}"> Elimina questa
+                                immagine
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Descrizione:</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
                         @error('description')

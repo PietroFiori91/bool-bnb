@@ -42,6 +42,16 @@ class Apartment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getImageUrlAttribute()
+    {
+        $image = $this->images->first();
+
+        if ($image) {
+            return asset('storage/' . $image->path);
+        }
+
+        return asset('.\public\assets\img\IMG_20230909_145256.jpg');
+    }
     protected $fillable = [
         "user_id",
         'name',
