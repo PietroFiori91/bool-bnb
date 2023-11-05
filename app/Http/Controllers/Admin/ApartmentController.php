@@ -19,8 +19,8 @@ class ApartmentController extends Controller
         $user = Auth::user();
         $apartments = $user->apartments;
         $apartments = Apartment::all();
-        // indirizza i nostri dati alla view index 
-        return view("admin.apartments.index",compact("apartments"));
+
+        return view("admin.apartments.index", compact("apartments"));
     }
 
     /**
@@ -28,7 +28,9 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.apartments.create');
+        $apartment = new Apartment;
+
+        return view('admin.apartments.create', compact('apartment'));
     }
 
     /**
@@ -37,8 +39,9 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            
+
             'name' => 'required|string|max:255',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
@@ -53,8 +56,16 @@ class ApartmentController extends Controller
 
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
-      
+
         $apartment = Apartment::create($data);
+
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+            foreach ($images as $image) {
+                $path = $image->store('images');
+                $apartment->images()->create(['url' => $path]);
+            }
+        }
 
         return redirect()->route("admin.apartments.index");
     }
@@ -74,10 +85,8 @@ class ApartmentController extends Controller
     public function edit(string $id)
     {
         $apartment = Apartment::findOrFail($id);
-        return view('admin.apartments.edit',  ['apartments' => $apartment]);
-
-
-        //
+        $apartmentImages = $apartment->images;
+        return view('admin.apartments.edit', compact('apartment', 'apartmentImages'));
     }
 
     /**
@@ -86,8 +95,22 @@ class ApartmentController extends Controller
     public function update(Request $request, string $id)
     {
         $apartment = Apartment::findOrFail($id);
+
+        // Gestione nuove immagini
+        if ($request->hasFile('new_images')) {
+            $newImages = $request->file('new_images');
+            foreach ($newImages as $newImage) {
+            }
+        }
+
+        // Gestione immagini da eliminare
+        if ($request->has('delete_images')) {
+            $imagesToDelete = $request->input('delete_images');
+        }
+
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
