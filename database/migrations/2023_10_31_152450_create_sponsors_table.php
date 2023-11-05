@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
-
             $table->string('name', 10)->unique();
             $table->decimal('price', 5, 2);
             $table->integer('duration');
             $table->text('payment_report');
             $table->rememberToken();
-
             $table->timestamps();
         });
     }
