@@ -31,9 +31,10 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        $apartments = new Apartment;
+
+        $apartment = new Apartment;
         $services = Service::all();
-        return view('admin.apartments.create', ["apartments" => $apartments], ['services' => $services]);
+        return view('admin.apartments.create', ['services' => $services]);
     }
 
     /**
