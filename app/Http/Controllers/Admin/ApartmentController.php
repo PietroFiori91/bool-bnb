@@ -61,9 +61,7 @@ class ApartmentController extends Controller
 
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
-        // dd( $currentUser->id);
-
-        // $apartment = Apartment::create($data);
+    
 
 
         $apartment = new Apartment();
