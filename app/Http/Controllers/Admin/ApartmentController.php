@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\Service;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -56,7 +57,8 @@ class ApartmentController extends Controller
             'longitude' => 'required|string',
             'visibility' => 'nullable|boolean',
             'availability' => 'nullable|boolean',
-            'services' => 'nullable'
+            'services' => 'nullable',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $currentUser = Auth::user();
@@ -66,17 +68,20 @@ class ApartmentController extends Controller
 
         if ($request->hasFile('images')) {
             $images = $request->file('images');
+            $imageUrls = [];
             foreach ($images as $image) {
                 $path = $image->store('images');
-                $apartment->images()->create(['url' => $path]);
+                $imageUrls[] = ['url' => $path];
             }
+
+            $apartment->images()->createMany($imageUrls);
         }
 
         $newApartment = new Apartment();
         $newApartment->fill($data);
         $newApartment->save();
 
-        if (key_exists('services' , $data) ) {
+        if (key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
 
@@ -90,7 +95,7 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
         $services = Service::all();
-        return view("admin.apartments.show",  ['apartments' => $apartment , 'services' => $services]);
+        return view("admin.apartments.show",  ['apartments' => $apartment, 'services' => $services]);
     }
     // compact("apartment" , 'services')
     /**
@@ -101,9 +106,7 @@ class ApartmentController extends Controller
         $apartment = Apartment::findOrFail($id);
         $services = Service::all();
 
-        return view('admin.apartments.edit',  ['apartments' => $apartment , 'services' => $services] );
-        
-
+        return view('admin.apartments.edit',  ['apartments' => $apartment, 'services' => $services]);
     }
 
     /**
@@ -113,21 +116,23 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
 
-        // Gestione nuove immagini
-        if ($request->hasFile('new_images')) {
-            $newImages = $request->file('new_images');
-            foreach ($newImages as $newImage) {
+        // Handle new images
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+            foreach ($images as $image) {
+                $path = $image->store('images');
+                $apartment->images()->create(['url' => $path]);
             }
         }
 
-        // Gestione immagini da eliminare
+        // Handle images to delete (if needed)
         if ($request->has('delete_images')) {
             $imagesToDelete = $request->input('delete_images');
+            // Add code here to delete specific images from storage and the database
         }
 
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
@@ -147,14 +152,15 @@ class ApartmentController extends Controller
             ],
         ]);
 
-        $apartment = Apartment::find($apartment->id);
+        // Update other apartment attributes
+        $apartment->update($data);
 
-        if (key_exists('services' , $data) ) {
+        // Handle services if needed
+        if (key_exists('services', $data)) {
             $apartment->services()->sync($data['services']);
         }
-        $apartment->update($data);
+
         return redirect()->route("admin.apartments.show", $apartment->id);
-        
     }
 
     /**
