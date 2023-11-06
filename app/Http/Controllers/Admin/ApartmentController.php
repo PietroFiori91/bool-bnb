@@ -20,10 +20,10 @@ class ApartmentController extends Controller
         $user = Auth::user();
         $apartments = $user->apartments;
         $apartments = Apartment::all();
-        $services = Service::all();
+        
 
         // indirizza i nostri dati alla view index 
-        return view("admin.apartments.index", ["apartments" => $apartments], ['services' => $services]);
+        return view("admin.apartments.index", ["apartments" => $apartments],);
     }
 
     /**
@@ -31,9 +31,10 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        $apartment = new Apartment;
 
-        return view('admin.apartments.create', compact('apartment'));
+        $apartment = Apartment::all();
+        $services = Service::all();
+        return view('admin.apartments.create', compact("apartment", "services"));
     }
 
     /**
@@ -60,23 +61,15 @@ class ApartmentController extends Controller
 
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
+    
 
-        $apartment = Apartment::create($data);
 
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
-            foreach ($images as $image) {
-                $path = $image->store('images');
-                $apartment->images()->create(['url' => $path]);
-            }
-        }
-
-        $newApartment = new Apartment();
-        $newApartment->fill($data);
-        $newApartment->save();
+        $apartment = new Apartment();
+        $apartment->fill($data);
+        $apartment->save();
 
         if (key_exists('services' , $data) ) {
-            $newApartment->services()->sync($data['services']);
+            $apartment->services()->sync($data['services']);
         }
 
         return redirect()->route("admin.apartments.index");
