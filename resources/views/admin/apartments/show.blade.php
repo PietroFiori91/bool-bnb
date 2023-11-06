@@ -2,20 +2,30 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST">
+        <form action="{{ route('admin.apartments.destroy', $apartments->id) }}" method="POST">
             @csrf()
             @method('DELETE')
-            <button  class="btn btn-danger" type="submit" name="name">Elimina</button>
+            <button class="btn btn-danger" type="submit" name="name">Elimina</button>
         </form>
-        <h1>{{ $apartment->name }}</h1>
+        <h1>{{ $apartments->name }}</h1>
 
-        <img src="{{ $apartment->image_url }}" alt="{{ $apartment->name }}" style="max-width: 100%;">
+        <img src="{{ $apartments->image_url }}" alt="{{ $apartments->name }}" style="max-width: 100%;">
 
 
-        <p><strong>Description:</strong> {{ $apartment->description }}</p>
-        <p><strong>Address:</strong> {{ $apartment->address }}</p>
-        <p><strong>Rooms:</strong> {{ $apartment->room }}</p>
-        <p><strong>Beds:</strong> {{ $apartment->bed }}</p>
+        <p><strong>Description:</strong> {{ $apartments->description }}</p>
+        <p><strong>Address:</strong> {{ $apartments->address }}</p>
+        <div class="">
+            <p><strong>services:</strong></p>
+            @foreach ($apartments->services as $service)
+            <div class="d-flex align-items-center">
+                <i class="p-2 fa-solid {{ $service->icon }}"></i>
+                <p>{{ $service->name }}</p>
+            </div>
+            @endforeach
+        </div>
+
+        <p><strong>Rooms:</strong> {{ $apartments->room }}</p>
+        <p><strong>Beds:</strong> {{ $apartments->bed }}</p>
 
         <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary">Back to List</a>
     </div>

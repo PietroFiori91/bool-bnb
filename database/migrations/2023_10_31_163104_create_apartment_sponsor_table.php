@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->unsignedBigInteger('apartment_id');
             $table->unsignedBigInteger('sponsor_id');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
 
             //FK
             $table->foreign('apartment_id')
