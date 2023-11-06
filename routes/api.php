@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post("contacts", [ContactController::class, "store"]);
+Route::get("apartments",[ApartmentController::class, "index"]);
+Route::get("apartments/{id}", [ApartmentController::class, "show"]);
