@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Models\Service;
 
 class ApartmentController extends Controller
 {
@@ -15,9 +16,10 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
+        $services = Service::all();
 
         // indirizza i nostri dati alla view index 
-        return view("admin.apartments.index", ["apartments" => $apartments]);
+        return view("admin.apartments.index", ["apartments" => $apartments], ['services' => $services]);
     }
 
     /**
@@ -25,7 +27,10 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.apartments.create');
+        $services = Service::all();
+        //gestione
+        
+        return view('admin.apartments.create', ['services' => $services]);
     }
 
     /**
@@ -44,12 +49,19 @@ class ApartmentController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'visibility' => 'nullable|boolean',
-            'availability' => 'nullable|boolean'
+            'availability' => 'nullable|boolean',
+            'services' => 'nullable'
         ]);
 
         $newApartment = new Apartment();
         $newApartment->fill($data);
         $newApartment->save();
+
+
+        
+        if (key_exists('services' , $data) ) {
+            $newApartment->services()->sync($data['services']);
+        }
 
         return redirect()->route("admin.apartments.index");
     }
@@ -60,19 +72,20 @@ class ApartmentController extends Controller
     public function show(string $id)
     {
         $apartment = Apartment::findOrFail($id);
-        return view("admin.apartments.show", compact("apartment"));
+        $services = Service::all();
+        return view("admin.apartments.show",  ['apartments' => $apartment , 'services' => $services]);
     }
-
+    // compact("apartment" , 'services')
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $apartment = Apartment::findOrFail($id);
-        return view('admin.apartments.edit',  ['apartments' => $apartment]);
+        $services = Service::all();
 
+        return view('admin.apartments.edit',  ['apartments' => $apartment , 'services' => $services] );
 
-        //
     }
 
     /**
@@ -91,6 +104,7 @@ class ApartmentController extends Controller
             'mq' => 'required|numeric',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
+            'services' => 'nullable',
             'visibility' => [
                 'required',
                 Rule::in(['1', '0'])
@@ -101,8 +115,14 @@ class ApartmentController extends Controller
             ],
         ]);
 
+        $apartment = Apartment::find($apartment->id);
+
+        if (key_exists('services' , $data) ) {
+            $apartment->services()->sync($data['services']);
+        }
         $apartment->update($data);
         return redirect()->route("admin.apartments.show", $apartment->id);
+        
     }
 
     /**

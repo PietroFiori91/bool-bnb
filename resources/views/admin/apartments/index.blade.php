@@ -8,6 +8,7 @@
                     <div class="col p-2">
                         <div class="card rounded-0" style="w">
 
+
                             <div class="card">
                                 <div class="row mt-2 d-flex ">
                                     <div class="col">

@@ -6,6 +6,19 @@
             <div class="col">
                 <form action="{{ route('admin.apartments.store') }}" method="POST">
                     @csrf
+
+
+                    @foreach ($services as $service)
+                    <div class="mb-3 form-check-inline">
+                        <label class="form-check-label" for="flexCheckDefault">{{$service->name}}</label>
+                        <i class="fa-solid {{ $service->icon}}"></i>
+                        <input class="form-check-input" name="services[]"  type="checkbox" value="{{ $service ->id}}" id="flexCheckDefault">
+                        @error('services')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    @endforeach
+
                     <div class="mb-3">
                         <label class="form-label">Name: </label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
