@@ -5,16 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+use App\Models\ApartmentSponsor;
 use App\Models\Image;
-use App\Models\Sponsor;
-use App\Models\Service;
-use App\Models\View;
 use App\Models\Message;
-use App\Models\User;
+use App\Models\Service;
+use App\Models\Sponsor;
 
 
 class Apartment extends Model
 {
+
+    protected $fillable = [
+        'name',
+        'address',
+        'description',
+        'room',
+        'bed',
+        'bathroom',
+        'mq',
+        'latitude',
+        'longitude',
+        'visibility',
+        'availability',
+    ];
+    
     use HasFactory;
 
     public function images()
@@ -41,29 +56,29 @@ class Apartment extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function getImageUrlAttribute()
+    public static function slugger($string)
     {
-        $image = $this->images->first();
+        $baseSlug = Str::slug($string);
 
-        if ($image) {
-            return asset('storage/' . $image->path);
+        $i = 1;
+
+        $slug = $baseSlug;
+
+        while (self::where('slug', $slug)->first()) {
+            $slug = $baseSlug . '-' . $i;
+            $i++;
         }
 
-        return asset('.\public\assets\img\IMG_20230909_145256.jpg');
+        return $slug;
     }
-    protected $fillable = [
-        "user_id",
-        'name',
-        'address',
-        'description',
-        'room',
-        'bed',
-        'bathroom',
-        'mq',
-        'latitude',
-        'longitude',
-        'visibility',
-        'availability',
-    ];
+
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
+    public function active_sponsors(){
+        return $this->sponsors(ApartmentSponsor::class)->withPivot('start_date','end_date');
+    }
+
 }

@@ -4,6 +4,7 @@ return [
 
     'apartments' => [
         [
+            "id" => 1,
             "name" => "Tenuta costiera con vasca idromassaggio e vista sull'oceano",
             "address" => "590 Ave Alhambra, Half Moon Bay, CA, 94019, Stati Uniti",
             "description" => "Raggiungi a piedi le migliori spiagge statali della zona, i ristoranti premiati, il porto di Half Moon Bay, le escursioni a piedi lungo il California Coastal Trail, le attività per famiglie nella zona e molto altro ancora.",
@@ -17,6 +18,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 2,
             "name" => "The Pacific Dream",
             "address" => "150 Reef Point Rd, Moss Beach, CA, 94038, Stati Uniti",
             "description" => "Il tuo sogno oceanico si manifesta qui.
@@ -32,6 +34,7 @@ return [
             "availability" => false,
         ],
         [
+            "id" => 3,
             "name" => "Tranquilla casa sull'albero con vista sull'oceano",
             "address" => "340 Swanston St. Aptos, CA, 95003, Stati Uniti",
             "description" => "Presentato da Sunset Magazine come una 'fuga chic'.
@@ -46,6 +49,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 4,
             "name" => "Marbella Lane - Oasi costiera rigenerante",
             "address" => "399-307 Genevieve Ave, Pacifica, CA, 94044, Stati Uniti",
             "description" => "Nascosta nella tranquilla e pittoresca valle di Vallemar, questa casa in legno di cedro di Lindahl offre serenità e comodità, con un rapido accesso a molti punti di viaggio. Questa casa ha un elegante design interno dello chalet, l'ampio soggiorno dispone di lucernari e ampie finestre, con accesso diretto alla terrazza del cortile e a una vasca idromassaggio. Goditi una tazza di tè ammirando la miracolosa bellezza della foresta e delle montagne che ti circondano; potresti persino avvistare occasionalmente un cervo o una volpe.",
@@ -59,6 +63,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 5,
             "name" => "Alloggio di lusso a Del Monte Forest, California, Stati Uniti",
             "address" => "3100-3198 Patio Dr, Pebble Beach, CA, 93953, Stati Uniti",
             "description" => "La foresta di Del Monte ispira la forma di questa residenza contemporanea californiana. Una capanna all'aperto riecheggia le linee rette degli alberi più alti, l'area lounge si estende sotto i rami tortuosi e, all'interno, danze luminose soffuse con le foglie su un tappeto verde muschio e pannelli in legno. 3 campi da golf, tra cui Pebble Beach, e 2 spiagge in 10 minuti ti faranno prendere il via e la sabbia.",
@@ -72,6 +77,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 6,
             "name" => "Luminoso, moderno 5b/4ba Portola Valley Home",
             "address" => "144-160 Los Trancos Cir, Portola Valley, CA, 94028, Stati Uniti",
             "description" => "Casa spaziosa e tranquilla nella Valle di Portola. Goditi la vasta terrazza all'aperto, accomodati vicino al camino, ammira gli alberi imponenti attraverso le splendide finestre panoramiche della casa o semplicemente rilassati nello spazio pulito, moderno e completamente arredato. I rinomati sentieri di Portola Valley che si affacciano sulla baia di San Francisco si trovano a soli 100 passi di distanza.",
@@ -85,6 +91,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 7,
             "name" => "Nature/Architectural Lovers Dream Pad in Sequoie",
             "description" => "Siamo amanti della natura e abbiamo comprato la casa dei nostri sogni tra le sequoie ai piedi del Monte Tam e ora lo condividiamo con i viaggiatori che apprezzano l'architettura e lo stile di vita all'interno e all'esterno della California settentrionale! Costruita dal visionario architetto biologico Daniel Lieberman nel 1962 su sequoie e vetri secolari, la casa è una composizione piena di spazi aperti ancorati a un camino centrale, simile al lavoro del mentore di Lieberman, Frank Lloyd Wright.",            "address" => "999-731 Lovell Ave, Mill Valley, CA, 94941, Stati Uniti",
             "room" => 3,
@@ -97,6 +104,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 8,
             "name" => "Rifugio esecutivo nel cuore della Silicon Valley",
             "address" => "3562 Golden State Dr, Santa Clara, CA, 95051, Stati Uniti",
             "description" => "Gioca e lavora in questo splendido rambler di 2100 metri quadrati a pochi minuti da Big Tech, Levi Stadium, Great America e tutto ciò che c'è di fantastico nella Bay Area. Master suite, più 2 camere da letto e un ufficio con 2 postazioni di lavoro e un futon per 8 persone. Goditi la cucina gourmet mentre ascolti la tua stazione Spotify preferita sul sistema di intrattenimento utilizzando l'app Onkyo. LG 55 in schermo piatto e camino fuori dalla cucina. Patio anteriore per il caffè del mattino e vasca idromassaggio per rilassarsi. Custode in loco nell'unità collegata.",
@@ -110,6 +118,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 9,
             "name" => "Il cavalluccio marino di Willow Glen",
             "address" => "2541-2579 Richland Ave, San Jose, CA, 95125, Stati Uniti",
             "description" => "In primo piano su Houzz, Style Me Pretty Living e PopSugar, oltre che selezionato per il prestigioso Willow Glen Home Tour, questa casa pluripremiata completamente ristrutturata con un paradiso per il nuoto è stata aperta per le tue vacanze, soggiorni o viaggi di lavoro!
@@ -125,6 +134,7 @@ return [
             "availability" => true,
         ],
         [
+            "id" => 10,
             "name" => "Log-Cabin Home Retreat nella foresta",
             "address" => "123 Skylonda Dr, Woodside, CA, 94062, Stati Uniti",
             "description" => "Rilassati e rigenerati in questo incantevole rifugio unico nel suo genere in legno, situato su un ettaro di sequoie della California del Nord. Costruito nel 1937, questo luogo ospita matrimoni, concerti all'aperto, ritiri, famiglie e gruppi che hanno apprezzato la proprietà per decenni. Vuoi fare escursioni a piedi o in bicicletta? La proprietà ha un sentiero che inizia in fondo al vialetto, va dietro la casa e conduce alla riserva aperta La Honda Creek Open Space Preserve di oltre 6100 acri. ",
@@ -138,6 +148,7 @@ return [
             "availability" => false,
         ],
         [
+            "id" => 11,
             "name" => "Splendido resort californiano e piscina a sfioro",
             "address" => "590 Ave Alhambra, Half Moon Bay, 94019, CA, Stati Uniti",
             "description" => "Raggiungi a piedi le migliori spiagge statali della zona, i ristoranti premiati, il porto di Half Moon Bay, le escursioni a piedi lungo il California Coastal Trail, le attività per famiglie nella zona e molto altro ancora.",
@@ -151,6 +162,7 @@ return [
             "availability" => true,
         ],    
         [
+            "id" => 12,
             "name" => "Raggiungi a piedi la spiaggia da questa casa fronte oceano",
             "address" => "178 Wienke Way, Moss Beach, CA, 94038, Stati Uniti",
             "description" => "La tua fuga sulla spiaggia ti aspetta.
@@ -166,6 +178,7 @@ return [
             "availability" => false,
         ],
         [
+            "id" => 13,
             "name" => "Oasi del centro con piscina riscaldata vicino a Whole Foods",
             "address" => "21 Sunol St, San Jose, CA 95126, Stati Uniti",
             "description" => "Spazioso vittoriano con PISCINA e SPA a 1/2 miglio dal centro di San Jose e a pochi minuti dall'aeroporto. 4 camere da letto 3 bagni casa con incredibile cortile, dotato di 1/4 campo da basket e camino a gas. Whole Foods, Coffee Shops e Breweries sono facilmente raggiungibili a piedi!",
