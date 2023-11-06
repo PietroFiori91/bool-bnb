@@ -7,6 +7,21 @@
                 <form action="{{ route('admin.apartments.update', $apartment->id) }}" method="POST">
                     @csrf()
                     @method('put')
+
+                    @foreach ($services as $service)
+                    <div class="mb-3 form-check-inline">
+                        <label class="form-check-label" for="flexCheckDefault">{{$service->name}}</label>
+                        <input class="form-check-input" name="services[]" type="checkbox" value="{{$service->id }}" id="flexCheckDefault" 
+                        
+                        {{ $apartments->services?->contains($service) ? 'checked' : '' }}>
+                        @error('services')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                        {{-- @dd($apartments->services) --}}
+                    </div>
+                    @endforeach
+
+
                     <div class="mb-3">
                         <label class="form-label">Name: </label>
                         <input type="text" class="form-control" value="{{ $apartment->name }}" name="name">

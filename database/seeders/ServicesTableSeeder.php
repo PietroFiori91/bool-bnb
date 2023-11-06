@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+// use Faker\Generator as Faker;
 
 class servicesTableSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class servicesTableSeeder extends Seeder
     public function run(): void
     {
         
-        $servicesData = [
+        $services = [
             [
                 'name' => 'Cucina',
                 'description' => 'Uno spazio in cui gli ospiti possono cucinare',
@@ -113,14 +114,14 @@ class servicesTableSeeder extends Seeder
             
         ];
 
-
-
-        foreach ($servicesData as $serviceData) {
+                foreach ($services as $service) {
             $newService = new Service();
-            $newService -> name = $serviceData['name'];
-            $newService -> description = $serviceData['description'];
-            $newService -> icon =  $serviceData['icon'];
+            $newService -> name = $service['name'];
+            $newService -> description = $service['description'];
+            $newService -> icon =  $service['icon'];
             $newService -> save();
         }
     }
 }
+
+
