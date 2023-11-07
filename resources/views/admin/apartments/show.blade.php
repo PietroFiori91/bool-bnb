@@ -28,5 +28,6 @@
         <p><strong>Beds:</strong> {{ $apartments->bed }}</p>
 
         <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary">Back to List</a>
+        <a href="{{ route('api.sponsors.index') }}" class="btn btn-warning">Sponsorizza</a>
     </div>
 @endsection
