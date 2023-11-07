@@ -21,10 +21,10 @@ class ApartmentController extends Controller
         $user = Auth::user();
         $apartments = $user->apartments;
         $apartments = Apartment::all();
-
+        $services = Service::all();
 
         // indirizza i nostri dati alla view index 
-        return view("admin.apartments.index", ["apartments" => $apartments],);
+        return view("admin.apartments.index", ["apartments" => $apartments], ['services' => $services]);
     }
 
     /**
@@ -32,10 +32,10 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        $apartment = Apartment::all();
+        $apartment = new Apartment();
         $services = Service::all();
 
-        return view('admin.apartments.create', ["apartment" => $apartment], ['services' => $services]);
+        return view('admin.apartments.create', ["apartment" => $apartment, 'services' => $services]);
     }
 
     /**
@@ -63,14 +63,17 @@ class ApartmentController extends Controller
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
 
-
+        $apartment = Apartment::create($data);
 
         if ($request->hasFile('images')) {
             $images = $request->file('images');
+            $imageUrls = [];
             foreach ($images as $image) {
                 $path = $image->store('images');
-                $apartment->images()->create(['url' => $path]);
+                $imageUrls[] = ['url' => $path];
             }
+
+            $apartment->images()->createMany($imageUrls);
         }
 
         $newApartment = new Apartment();
