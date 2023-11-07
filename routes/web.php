@@ -35,9 +35,12 @@ Route::middleware(["auth", "verified"])
         Route::get("/apartments/{id}/edit", [ApartmentController::class, "edit"])->name("apartments.edit");           //UPDATE
         Route::put("/apartments/{id}", [ApartmentController::class, "update"])->name("apartments.update");
         Route::delete("/apartments/{id}", [ApartmentController::class, "destroy"])->name("apartments.destroy");       //DESTROY
-        // la route dell'update posso chiamarla in put o path è indifferente, questa rotta riceverà i dati di edit e aggiornare l'elemento nel database a differenza dello store che crea l'elemento
+        // la route dell'update posso chiamarla in put o patch è indifferente, questa rotta riceverà i dati di edit e aggiornare l'elemento nel database a differenza dello store che crea l'elemento
+        // All user sponsor per apartment
+        Route::get('/sponsors/{id}', [SponsorController::class, 'index'])->name('sponsors.index');
+
         // Payment process
-        Route::post('/process-payment', [PaymentController::class, 'processPayment'])->name('process_payment');
+        Route::post('/payments', [PaymentController::class, 'processPayment'])->name('process_payment');
     });
 
 Route::get('/dashboard', function () {

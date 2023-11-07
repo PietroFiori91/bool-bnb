@@ -16,14 +16,14 @@
                             <img src="{{ asset('assets/img/IMG_20230909_145053.jpg') }}" class="card-img-top rounded-0"
                                 alt="">
                         </div>
-                        <div class="card-body h-50">
+                        <div class="card-body h-45">
                             <div class="row d-flex">
                                 <a class="text-decoration-none p-2 text-center text-black"
                                     href="/admin/apartments/{{ $apartment->id }}">{{ $apartment['name'] }}</a>
                                 <span class="text-decoration-none p-2 text-center">{{ $apartment->address }}</span>
                             </div>
                         </div>
-                        <div class="p-2 mt-2 d-flex justify-content-center">
+                        <div class="p-2 d-flex justify-content-center">
                             <a href="{{ route('admin.apartments.edit', $apartment->id) }}">
                                 <button class="btn btn-md m-2 btn-primary">Modifica</button></a>
                             <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST">
