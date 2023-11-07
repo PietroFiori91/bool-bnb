@@ -31,13 +31,13 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Immagini esistenti:</label>
-                        @foreach ($apartments->images as $image)
+                        {{-- @foreach ($apartments->images as $image)
                             <div>
                                 <img src="{{ $image->url }}" alt="{{ $image->name }}" style="max-width: 100px;">
                                 <input type="checkbox" name="delete_images[]" value="{{ $image->id }}"> Elimina questa
                                 immagine
                             </div>
-                        @endforeach
+                        @endforeach --}}
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Aggiungi nuove immagini:</label>

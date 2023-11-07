@@ -32,10 +32,10 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        $apartment = Apartment::all();
+        $apartment = new Apartment();
         $services = Service::all();
 
-        return view('admin.apartments.create', ["apartment" => $apartment], ['services' => $services]);
+        return view('admin.apartments.create', ["apartment" => $apartment, 'services' => $services]);
     }
 
     /**
@@ -58,7 +58,6 @@ class ApartmentController extends Controller
             'visibility' => 'nullable|boolean',
             'availability' => 'nullable|boolean',
             'services' => 'nullable',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $currentUser = Auth::user();
@@ -133,6 +132,7 @@ class ApartmentController extends Controller
 
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
