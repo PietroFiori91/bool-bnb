@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.apartments.destroy', $apartments->id) }}" method="POST">
+        <form class="mt-3 mb-3" action="{{ route('admin.apartments.destroy', $apartments->id) }}" method="POST">
             @csrf()
             @method('DELETE')
             <button class="btn btn-danger" type="submit" name="name">Elimina</button>
@@ -28,6 +28,13 @@
         <p><strong>Beds:</strong> {{ $apartments->bed }}</p>
 
         <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary">Back to List</a>
-        <a href="{{ route('api.sponsors.index') }}" class="btn btn-warning">Sponsorizza</a>
+
+        <a href="{{ route('api.sponsors.index', ['apartment' => $apartments]) }}" class="tip">
+            <button class="btn btn-warning">
+                Sponsorizza
+            </button>
+        </a>
+
+
     </div>
 @endsection
