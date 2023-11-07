@@ -13,14 +13,15 @@
                             <i class="fa-solid {{ $service->icon }}"></i>
                             <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
                                 id="flexCheckDefault">
-                            @error('services')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+
                         </div>
                     @endforeach
+                    @error('services')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <div class="mb-3">
-                        <label class="form-label">Name: </label>
+                        <label class="form-label">Nome: </label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>

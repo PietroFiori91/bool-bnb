@@ -57,7 +57,7 @@ class ApartmentController extends Controller
             'longitude' => 'required|string',
             'visibility' => 'nullable|boolean',
             'availability' => 'nullable|boolean',
-            'services' => 'nullable',
+            'services' => 'required|min:1',
         ]);
 
         $currentUser = Auth::user();
