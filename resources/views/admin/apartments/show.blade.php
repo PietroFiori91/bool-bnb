@@ -9,7 +9,7 @@
         </form>
         <h1>{{ $apartments->name }}</h1>
 
-        <img src="{{ $apartments->image_url }}" alt="{{ $apartments->name }}" style="max-width: 100%;">
+        <img src="{{ asset('./sorage/posts') }}" alt="{{ $apartments->name }}" style="max-width: 100%;">
 
 
         <p><strong>Description:</strong> {{ $apartments->description }}</p>
@@ -17,10 +17,10 @@
         <div class="">
             <p><strong>services:</strong></p>
             @foreach ($apartments->services as $service)
-            <div class="d-flex align-items-center">
-                <i class="p-2 fa-solid {{ $service->icon }}"></i>
-                <p>{{ $service->name }}</p>
-            </div>
+                <div class="d-flex align-items-center">
+                    <i class="p-2 fa-solid {{ $service->icon }}"></i>
+                    <p>{{ $service->name }}</p>
+                </div>
             @endforeach
         </div>
 

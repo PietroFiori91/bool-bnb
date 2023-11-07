@@ -4,19 +4,19 @@
     <div class="container py-4">
         <div class="row">
             <div class="col">
-                <form action="{{ route('admin.apartments.store') }}" method="POST">
+                <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-
                     @foreach ($services as $service)
-                    <div class="mb-3 form-check-inline">
-                        <label class="form-check-label" for="flexCheckDefault">{{$service->name}}</label>
-                        <i class="fa-solid {{ $service->icon}}"></i>
-                        <input class="form-check-input" name="services[]"  type="checkbox" value="{{ $service ->id}}" id="flexCheckDefault">
-                        @error('services')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
+                        <div class="mb-3 form-check-inline">
+                            <label class="form-check-label" for="flexCheckDefault">{{ $service->name }}</label>
+                            <i class="fa-solid {{ $service->icon }}"></i>
+                            <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
+                                id="flexCheckDefault">
+                            @error('services')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     @endforeach
 
                     <div class="mb-3">
@@ -32,8 +32,7 @@
                         @foreach ($apartment->images as $image)
                             <div>
                                 <img src="{{ $image->url }}" alt="{{ $image->name }}" style="max-width: 100px;">
-                                <input type="checkbox" name="images[]" value="{{ $image->id }}"> Elimina questa
-                                immagine
+                                <input type="checkbox" name="images[]" value="{{ $image->id }}"> Elimina questa immagine
                             </div>
                         @endforeach
                     </div>

@@ -18,6 +18,7 @@ class Apartment extends Model
 
     protected $fillable = [
         'name',
+        'image',
         'address',
         'description',
         'room',
@@ -29,12 +30,12 @@ class Apartment extends Model
         'visibility',
         'availability',
     ];
-    
+
     use HasFactory;
 
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->belongsToMany(Image::class, 'apartment_images', 'apartment_id', 'image_id');
     }
     public function sponsors()
     {
@@ -77,8 +78,8 @@ class Apartment extends Model
         return $this->slug;
     }
 
-    public function active_sponsors(){
-        return $this->sponsors(ApartmentSponsor::class)->withPivot('start_date','end_date');
+    public function active_sponsors()
+    {
+        return $this->sponsors(ApartmentSponsor::class)->withPivot('start_date', 'end_date');
     }
-
 }
