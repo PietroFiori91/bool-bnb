@@ -16,6 +16,6 @@ class Image extends Model
 
     public function apartment()
     {
-        return $this->belongsT(Apartment::class);
+        return $this->belongsToMany(Apartment::class, 'apartment_images', 'image_id', 'apartment_id');
     }
 }

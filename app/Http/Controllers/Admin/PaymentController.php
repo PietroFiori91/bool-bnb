@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Braintree\Transaction;
 use Braintree\Gateway;
+use Carbon\Carbon;
 use App\Models\Sponsor;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\SponsorController;
 
 
 
@@ -15,17 +18,24 @@ class PaymentController extends Controller
 {
     public function processPayment(Request $request)
     {
-        $paymentMethod = "creditCard";
-        $sponsorID = $request->input('sponsor_id');
-        $sponsor = Sponsor::find($sponsorID);
-        $apartmentID = $request->input('apartment_id');
-        $apartment = Apartment::find($apartmentID);
+        $request->validate([
+            'sponsor_id' => 'required|exists:sponsors,id',
+            'apartment_id' => 'required|exists:apartments,id',
+            'payment_method_nonce' => 'required',
+        ]);
+
+        $paymentMethod = $request->input('payment_method', 'creditCard'); // Default a 'creditCard'
+        $sponsorId = $request->input('sponsor_id');
+        $sponsors = Sponsor::find($sponsorId);
+        $apartmentId = $request->input('apartment_id');
+        $apartment = Apartment::find($apartmentId);
         $nonce = $request->payment_method_nonce;
-        $price = $sponsor->price;
+        $price = $sponsors->price;
 
         // Effettua il pagamento utilizzando Braintree
         $gateway = new Gateway([
-            'environment' => config('services.braintree.environment'),
+            'model' => config('services.braintree.model'),
+            'environment' => config('services.braintree.env'),
             'merchantId' => config('services.braintree.merchant_id'),
             'publicKey' => config('services.braintree.public_key'),
             'privateKey' => config('services.braintree.private_key'),
@@ -52,14 +62,14 @@ class PaymentController extends Controller
             if ($apartment->sponsors()->where('valid', true)->count() > 0) {
 
                 $apartment->sponsors()->where('valid', true)->update([
-                    'end_date' => DB::raw('DATE_ADD(end_date, INTERVAL ' . $sponsor->duration . ' HOUR)'),
+                    'end_date' => DB::raw('DATE_ADD(end_date, INTERVAL ' . $sponsors->duration . ' HOUR)'),
                 ]);
                 return view('admin.payment.already');
             } else { //se non esise una sponsorizzazione attiva
-                $apartment->sponsors()->attach($sponsor->id, [
-                    'start_date' => now()->addHours(2), // Imposta la data corrente
-                    'end_date' => (now()->addHours(2 + $sponsor->duration)),
-                ]);
+                $apartment->sponsors()->attach($sponsors->id, [
+                    'start_date' => now()->addHours(2), // Imposta la data corrente + 2 ore
+                    'end_date' => (now()->addHours(2 + $sponsors->duration)),
+                ]); // imposta la durata a partire da 2 ore dalla data corrente
             }
 
             return view('admin.payment.success');
