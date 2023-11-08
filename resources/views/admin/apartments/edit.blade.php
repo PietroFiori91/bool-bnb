@@ -17,7 +17,6 @@
                         @error('services')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-                        {{-- @dd($apartments->services) --}}
                     </div>
                     @endforeach
 

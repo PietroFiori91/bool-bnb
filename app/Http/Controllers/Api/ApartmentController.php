@@ -10,13 +10,15 @@ class ApartmentController extends Controller
 {
    public function index(){
     // recupero i dati dal database
-    $apartments = Apartment::all();
+    $apartments = Apartment::with(["user", "services"])->get();
 
      return response()->json($apartments);
    }
 
    public function show($id){
-    $apartment = Apartment::where("id",$id)->first();
+    $apartment = Apartment::where("id",$id) ->with(["user", "services"])->first();
+; 
+
     return response()->json($apartment);
    }
 }
