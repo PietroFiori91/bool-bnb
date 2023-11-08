@@ -72,11 +72,9 @@ class ApartmentController extends Controller
         //         $path = $image->store('images');
         //         $imageUrls[] = ['url' => $path];
         //     }
-
-            
+        //
         //     $apartment->images()->createMany($imageUrls);
         // }
-
 
         $imageUrls = Storage::put('images', $data['images']);
 
@@ -128,23 +126,6 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $apartment = Apartment::findOrFail($id);
-
-        // Handle new images
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
-            foreach ($images as $image) {
-                $path = $image->store('images');
-                $apartment->images()->create(['url' => $path]);
-            }
-        }
-
-        // Handle images to delete (if needed)
-        if ($request->has('delete_images')) {
-            $imagesToDelete = $request->input('delete_images');
-            // Add code here to delete specific images from storage and the database
-        }
-
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'images.*' => 'nullable|image|max:6000',
@@ -166,6 +147,26 @@ class ApartmentController extends Controller
                 Rule::in(['1', '0'])
             ],
         ]);
+
+        
+        $apartment = Apartment::findOrFail($id);
+
+        // Handle new images
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+            foreach ($images as $image) {
+                $path = $image->store('images');
+                $apartment->images()->create(['url' => $path]);
+            }
+        }
+
+        // Handle images to delete (if needed)
+        if ($request->has('delete_images')) {
+            $imagesToDelete = $request->input('delete_images');
+            // Add code here to delete specific images from storage and the database
+        }
+
+
         
         $imageUrls = Storage::put('images', $data['images']);
         $data['images'] = $imageUrls;
