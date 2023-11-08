@@ -9,10 +9,11 @@
 
                     @foreach ($services as $service)
                         <div class="mb-3 form-check-inline">
-                            <label class="form-check-label" for="flexCheckDefault">{{ $service->name }}</label>
+                            <label class="form-check-label" for="service_{{ $service->id }}">{{ $service->name }}</label>
                             <i class="fa-solid {{ $service->icon }}"></i>
                             <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
-                                id="flexCheckDefault">
+                                id="service_{{ $service->id }}"
+                                {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
                             @error('services')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -21,7 +22,8 @@
 
                     <div class="mb-3">
                         <label class="form-label">Name: </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
+                            value="{{ old('name') }}">
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -35,73 +37,91 @@
                                 <input type="checkbox" name="images[]" value="{{ $image->id }}"> Elimina questa immagine
                             </div>
                         @endforeach --}}
-                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Descrizione:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3">{{ old('description') }}</textarea>
                         @error('description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Indirizzo:</label>
-                        <input class="form-control" id="exampleFormControlTextarea1" name="address">
+                        <input class="form-control" id="exampleFormControlTextarea1" name="address"
+                            value="{{ old('address') }}">
                         @error('address')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Numero camere:</label>
-                        <input class="form-control" type="number" id="exampleFormControlTextarea1" name="room">
+                        <input class="form-control" type="number" id="exampleFormControlTextarea1" name="room"
+                            value="{{ old('room') }}">
                         @error('room')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Numero letti:</label>
-                        <input class= "form-control" type="number" id="exampleFormControlTextarea1" name="bed">
+                        <input class="form-control" type="number" id="exampleFormControlTextarea1" name="bed"
+                            value="{{ old('bed') }}">
                         @error('bed')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Numero bagni:</label>
-                        <input class="form-control" type="number" id="exampleFormControlTextarea1" name="bathroom">
+                        <input class="form-control" type="number" id="exampleFormControlTextarea1" name="bathroom"
+                            value="{{ old('bathroom') }}">
                         @error('bathroom')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Metratura: </label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" name="mq">
+                        <input type="number" class="form-control" id="exampleFormControlInput1" name="mq"
+                            value="{{ old('mq') }}">
                         @error('mq')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Latitudine:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="latitude">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="latitude"
+                            value="{{ old('latitude') }}">
                         @error('latitude')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Longitudine:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="longitude">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="longitude"
+                            value="{{ old('longitude') }}">
                         @error('longitude')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Visibile: </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="visibility">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="visibility"
+                            value="{{ old('visibility') }}">
                         @error('visibility')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Disponibile: </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="availability">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="availability"
+                            value="{{ old('availability') }}">
                         @error('availability')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
