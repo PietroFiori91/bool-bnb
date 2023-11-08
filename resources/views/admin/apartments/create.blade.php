@@ -13,7 +13,6 @@
                             <i class="fa-solid {{ $service->icon }}"></i>
                             <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
                                 id="flexCheckDefault">
-
                         </div>
                     @endforeach
                     @error('services')
@@ -27,7 +26,7 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Immagini:</label>
                         <input type="file" class="form-control" accept="image/*" name="images[]" multiple>
                         @foreach ($apartment->images as $image)
@@ -35,7 +34,7 @@
                                 <img src="{{ $image->url }}" alt="{{ $image->name }}" style="max-width: 100px;">
                                 <input type="checkbox" name="images[]" value="{{ $image->id }}"> Elimina questa immagine
                             </div>
-                        @endforeach --}}
+                        @endforeach
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Descrizione:</label>

@@ -46,7 +46,7 @@ class ApartmentController extends Controller
         $data = $request->validate([
 
             'name' => 'required|string|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*' => 'nullable|image|max:6000',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
@@ -60,22 +60,41 @@ class ApartmentController extends Controller
             'services' => 'required|min:1',
         ]);
 
+
+        // dd($data);
+        //fino a qua coretto , la umages e una instanza di una classe 
+
+
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
 
         $apartment = Apartment::create($data);
 
+        // if ($request->hasFile('images')) {
+        //     $images = $request->file('images');
+        //     $imageUrls = [];
+        //     foreach ($images as $image) {
+        //         $path = $image->store('images');
+        //         $imageUrls[] = ['url' => $path];
+        //     }
+
+            
+        //     $apartment->images()->createMany($imageUrls);
+        // }
+
+
+        // $imageUrls = Storage::put('images', $data['images']);
+
+        $imageUrls = [];
+
         if ($request->hasFile('images')) {
-            $images = $request->file('images');
-            $imageUrls = [];
-            foreach ($images as $image) {
+            foreach ($request->file('images') as $image) {
                 $path = $image->store('images');
                 $imageUrls[] = ['url' => $path];
             }
-
-            $apartment->images()->createMany($imageUrls);
         }
 
+        
         $newApartment = new Apartment();
         $newApartment->fill($data);
         $newApartment->save();
@@ -132,7 +151,7 @@ class ApartmentController extends Controller
 
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*' => 'nullable|image|max:6000',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
@@ -141,7 +160,7 @@ class ApartmentController extends Controller
             'mq' => 'required|numeric',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'services' => 'nullable',
+            'services' => 'required|min:1',
             'visibility' => [
                 'required',
                 Rule::in(['1', '0'])
@@ -151,7 +170,8 @@ class ApartmentController extends Controller
                 Rule::in(['1', '0'])
             ],
         ]);
-
+        $imageUrls = Storage::put('images', $data['images']);
+        $data['images'] = $imageUrls;
         // Update other apartment attributes
         $apartment->update($data);
 
