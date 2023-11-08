@@ -8,8 +8,9 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" id="registration-form">
                             @csrf
+
 
                             <div class="mb-4 row">
                                 <label for="name"
@@ -89,7 +90,7 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
-                                    @error('password-confirm')
+                                    @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -99,7 +100,7 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" id="register-button">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
@@ -111,4 +112,19 @@
             </div>
         </div>
     </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let registrationForm = document.getElementById('registration-form');
+            registrationForm.addEventListener('submit', function(event) {
+                let password = document.getElementById('password').value;
+                let confirmation = document.getElementById('password-confirm').value;
+
+                if (password !== confirmation) {
+                    alert('Passwords do not match');
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 @endsection
