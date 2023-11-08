@@ -14,12 +14,11 @@
                             <label class="form-check-label" for="flexCheckDefault">{{ $service->name }}</label>
                             <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
                                 id="flexCheckDefault" {{ $apartments->services?->contains($service) ? 'checked' : '' }}>
-                            @error('services')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            {{-- @dd($apartments->services) --}}
                         </div>
                     @endforeach
+                    @error('services')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
 
                     <div class="mb-3">

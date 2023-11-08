@@ -60,15 +60,10 @@ class ApartmentController extends Controller
             'services' => 'required|min:1',
         ]);
 
-
-        // dd($data);
-        //fino a qua coretto , la umages e una instanza di una classe 
-
-
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
 
-        $apartment = Apartment::create($data);
+        // $apartment = Apartment::create($data);
 
         // if ($request->hasFile('images')) {
         //     $images = $request->file('images');
@@ -83,13 +78,13 @@ class ApartmentController extends Controller
         // }
 
 
-        // $imageUrls = Storage::put('images', $data['images']);
+        $imageUrls = Storage::put('images', $data['images']);
 
         $imageUrls = [];
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $path = $image->store('images');
+                $path = $image->store('storage/images');
                 $imageUrls[] = ['url' => $path];
             }
         }
@@ -103,6 +98,7 @@ class ApartmentController extends Controller
             $newApartment->services()->sync($data['services']);
         }
 
+        // dd($data);
         return redirect()->route("admin.apartments.index");
     }
 
@@ -170,6 +166,7 @@ class ApartmentController extends Controller
                 Rule::in(['1', '0'])
             ],
         ]);
+        
         $imageUrls = Storage::put('images', $data['images']);
         $data['images'] = $imageUrls;
         // Update other apartment attributes
