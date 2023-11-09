@@ -89,7 +89,7 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label class="form-label">Latitudine:</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="latitude"
                             value="{{ old('latitude') }}">
@@ -105,7 +105,7 @@
                         @error('longitude')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-                    </div>
+                    </div> --}}
 
                     <div class="mb-3">
                         <label class="form-label">Visibile: </label>
