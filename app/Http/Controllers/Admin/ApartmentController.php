@@ -133,9 +133,7 @@ class ApartmentController extends Controller
         $newApartment = new Apartment();
         $newApartment->fill($data);
         $newApartment->save();
-        
-
-        $apartment = Apartment::findOrFail($id);
+    
 
         // Handle images to delete (if needed)
         if ($request->has('delete_images')) {
@@ -143,10 +141,9 @@ class ApartmentController extends Controller
         }
     
         // Handle images to update or add
-        if ($request->has('images')) {
-            $images_path = Storage::put('apartments', $data['images']);
-            dd($images_path);
-        }
+        // if ($request->has('images')) {
+        //     $images_path = Storage::put('apartments', $data['images']);
+        // }
 
         $apartment->update($data);
     
