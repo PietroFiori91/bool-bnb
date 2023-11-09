@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container">
+
+        <div class="container py-5 mx-auto d-flex justify-content-center">
+            <a href="/" class="btn btn-primary btn-lg" type="button">Torna in Home</a>
+            <a href="{{ route('admin.apartments.create') }}"><button class="btn btn-primary btn-lg mx-1">Nuovo appartamento</button></a>
+        </div>
+
         <div class="row">
             <div class="row cols d-flex justify-content-center">
                 @foreach ($apartments as $apartment)

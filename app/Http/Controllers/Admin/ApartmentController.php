@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\Service;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class ApartmentController extends Controller
 {
@@ -53,31 +54,31 @@ class ApartmentController extends Controller
             'bed' => 'required|integer',
             'bathroom' => 'required|integer',
             'mq' => 'required|numeric',
-            'latitude' => 'required|string',
-            'longitude' => 'required|string',
+            'latitude' => 'nullable|string',
+            'longitude' => 'nullable|string',
             'visibility' => 'nullable|boolean',
             'availability' => 'nullable|boolean',
             'services' => 'required|min:1',
         ]);
 
-        // $query = $data["address"];
-        // $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
+        $query = $data["address"];
+        $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
 
-        // $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
-        //     'query' => $query,
-        //     'key' => $key,
-        // ]);
+        $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
+            'query' => $query,
+            'key' => $key,
+        ]);
 
-        // $geocodingData = $response->json();
+        $geocodingData = $response->json();
 
-        // if (!empty($geocodingData['results'])) {
-        //     $location = $geocodingData['results'][0]['position'];
-        //     $data['latitude'] = $location['lat'];
-        //     $data['longitude'] = $location['lon'];
-        // } else {
-        //     session()->flash('error', 'Indirizzo non valido. Per favore, inserisci un indirizzo valido.');
-        //     return redirect()->route("admin.apartments.create");
-        // }
+        if (!empty($geocodingData['results'])) {
+            $location = $geocodingData['results'][0]['position'];
+            $data['latitude'] = $location['lat'];
+            $data['longitude'] = $location['lon'];
+        } else {
+            session()->flash('error', 'Indirizzo non valido. Per favore, inserisci un indirizzo valido.');
+            return redirect()->route("admin.apartments.create");
+        }
 
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
