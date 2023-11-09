@@ -9,9 +9,8 @@
         </form>
         <h1>{{ $apartments->name }}</h1>
 
-        {{-- <img src="{{ asset('./sorage/posts') }}" alt="{{ $apartments->name }}" style="max-width: 100%;"> --}}
-        {{$apartments->images}}
-
+        <img style="width: 310px" src=" {{ asset('/storage/' . $apartments->images)}}" alt="">
+        
         <p><strong>Description:</strong> {{ $apartments->description }}</p>
         <p><strong>Address:</strong> {{ $apartments->address }}</p>
         <div class="">
