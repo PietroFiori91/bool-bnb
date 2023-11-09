@@ -29,6 +29,9 @@
                             {{-- @dd($apartments->services) --}}
                         </div>
                     @endforeach
+                    @error('services')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
 
                     <div class="mb-3">
@@ -51,7 +54,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Aggiungi nuove immagini:</label>
-                        <input type="file" class="form-control" name="images[]" multiple>
+                        <input type="file" class="form-control" name="images" multiple>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Descrizione:</label>

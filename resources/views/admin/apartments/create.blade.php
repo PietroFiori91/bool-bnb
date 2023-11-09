@@ -12,32 +12,30 @@
                             <label class="form-check-label" for="service_{{ $service->id }}">{{ $service->name }}</label>
                             <i class="fa-solid {{ $service->icon }}"></i>
                             <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
-                                id="service_{{ $service->id }}"
-                                {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
-                            @error('services')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                                id="flexCheckDefault">
                         </div>
                     @endforeach
+                    @error('services')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <div class="mb-3">
-                        <label class="form-label">Name: </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
-                            value="{{ old('name') }}">
+                        <label class="form-label">Nome: </label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Immagini:</label>
-                        <input type="file" class="form-control" accept="image/*" name="images[]" multiple>
+                        <input type="file" class="form-control" accept="image/*" name="images" multiple>
                         @foreach ($apartment->images as $image)
                             <div>
                                 <img src="{{ $image->url }}" alt="{{ $image->name }}" style="max-width: 100px;">
-                                <input type="checkbox" name="images[]" value="{{ $image->id }}"> Elimina questa immagine
+                                <input type="checkbox" name="images" value="{{ $image->id }}"> Elimina questa immagine
                             </div>
-                        @endforeach --}}
-
+                        @endforeach
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Descrizione:</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3">{{ old('description') }}</textarea>

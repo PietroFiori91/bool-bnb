@@ -38,15 +38,15 @@ class ApartmentController extends Controller
         return view('admin.apartments.create', ["apartment" => $apartment, 'services' => $services]);
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $data = $request->validate([
-
             'name' => 'required|string|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images' => 'nullable|image|max:6000',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
@@ -57,33 +57,26 @@ class ApartmentController extends Controller
             'longitude' => 'required|string',
             'visibility' => 'nullable|boolean',
             'availability' => 'nullable|boolean',
-            'services' => 'nullable',
+            'services' => 'required|min:1',
         ]);
-
+    
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
-
-        $apartment = Apartment::create($data);
-
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
-            $imageUrls = [];
-            foreach ($images as $image) {
-                $path = $image->store('images');
-                $imageUrls[] = ['url' => $path];
-            }
-
-            $apartment->images()->createMany($imageUrls);
-        }
-
+    
         $newApartment = new Apartment();
         $newApartment->fill($data);
         $newApartment->save();
-
+    
+        // Salva il percorso dell'immagine dopo aver salvato l'appartamento
+        if ($request->has('images')) {
+            $images_path = Storage::put('apartments', $data['images']);
+            $newApartment->update(['images' => $images_path]);
+        }
+    
         if (key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
-
+    
         return redirect()->route("admin.apartments.index");
     }
 
@@ -113,26 +106,9 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $apartment = Apartment::findOrFail($id);
-
-        // Handle new images
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
-            foreach ($images as $image) {
-                $path = $image->store('images');
-                $apartment->images()->create(['url' => $path]);
-            }
-        }
-
-        // Handle images to delete (if needed)
-        if ($request->has('delete_images')) {
-            $imagesToDelete = $request->input('delete_images');
-            // Add code here to delete specific images from storage and the database
-        }
-
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images' => 'nullable|image|max:6000',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
@@ -141,7 +117,7 @@ class ApartmentController extends Controller
             'mq' => 'required|numeric',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'services' => 'nullable',
+            'services' => 'required|min:1',
             'visibility' => [
                 'required',
                 Rule::in(['1', '0'])
@@ -152,10 +128,27 @@ class ApartmentController extends Controller
             ],
         ]);
 
-        // Update other apartment attributes
-        $apartment->update($data);
 
-        // Handle services if needed
+        $apartment = Apartment::findOrFail($id);
+        // $newApartment = new Apartment();
+        // $newApartment->fill($data);
+        // $newApartment->save();
+        $apartment -> update($data) ;
+
+        // Handle images to delete (if needed)
+        if ($request->has('delete_images')) {
+            $imagesToDelete = $request->input('delete_images');
+        }
+    
+        // Handle images to update or add
+        // if ($request->has('images')) {
+        //     $images_path = Storage::put('apartments', $data['images']);
+        // }
+        if ($request->has('images')) {
+            $images_path = Storage::put('apartments', $data['images']);
+            $apartment->update(['images' => $images_path]);
+        }
+    
         if (key_exists('services', $data)) {
             $apartment->services()->sync($data['services']);
         }
