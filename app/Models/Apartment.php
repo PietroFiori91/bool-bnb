@@ -14,12 +14,16 @@ use App\Models\Sponsor;
 
 
 class Apartment extends Model
-{
+{  //  protected $casts = [
+
+//     'image' => 'array'
+// ];
+
 
     protected $fillable = [
-        "user_id",
+        'user_id',
         'name',
-        'image',
+        'images',
         'address',
         'description',
         'room',
