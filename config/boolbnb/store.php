@@ -160,7 +160,7 @@ return [
             "longitude" => '122°28\'06.8"W',
             "visibility" => true,
             "availability" => true,
-        ],    
+        ],
         [
             "id" => 12,
             "name" => "Raggiungi a piedi la spiaggia da questa casa fronte oceano",
@@ -496,6 +496,6 @@ return [
     // TomTom API
 
     'TomTomAPI' => [
-        'apiUrl' => 'chiave API TomTom URL'
+        'apiUrl' => 'https://api.tomtom.com/search/2/search?key=$apiKey&q=$query'
     ]
 ];
