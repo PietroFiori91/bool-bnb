@@ -10,15 +10,14 @@
                     @method('put')
 
                     @foreach ($services as $service)
-                    <div class="mb-3 form-check-inline">
-                        <label class="form-check-label" for="flexCheckDefault">{{$service->name}}</label>
-                        <input class="form-check-input" name="services[]" type="checkbox" value="{{$service->id }}" id="flexCheckDefault" 
-                        
-                        {{ $apartments->services?->contains($service) ? 'checked' : '' }}>
-                        @error('services')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
+                        <div class="mb-3 form-check-inline">
+                            <label class="form-check-label" for="flexCheckDefault">{{ $service->name }}</label>
+                            <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
+                                id="flexCheckDefault" {{ $apartments->services?->contains($service) ? 'checked' : '' }}>
+                            @error('services')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="mb-3 form-check-inline">
                             <label class="form-check-label" for="flexCheckDefault">{{ $service->name }}</label>
                             <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
@@ -30,7 +29,7 @@
                         </div>
                     @endforeach
                     @error('services')
-                    <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
 
 
@@ -118,20 +117,30 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Visibile: </label>
-                        <input type="text" class="form-control" value="{{ old('visibility', $apartments->visibility) }}"
-                            name="visibility">
-                        @error('visibility')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="checkbox" value="1" id="visibility-input"
+                                name="visibility" {{ $apartments->visibility ? 'checked' : '' }}>
+                            <label class="form-check-label" for="visibility-input">
+                                Visibile
+                            </label>
+                            @error('visibility')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Disponibile: </label>
-                        <input type="text" class="form-control"
-                            value="{{ old('availability', $apartments->availability) }}" name="availability">
-                        @error('availability')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="checkbox" value="1" id="availability-input"
+                                name="availability" {{ $apartments->availability ? 'checked' : '' }}>
+                            <label class="form-check-label" for="availability-input">
+                                Disponibile
+                            </label>
+                            @error('availability')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
                     <button class="btn btn-primary">Salva</button>

@@ -34,14 +34,8 @@ class ApartmentUpsertRequest extends FormRequest
             'latitude' => 'nullable|string',
             'longitude' => 'nullable|string',
             'services' => 'required|min:1',
-            'visibility' => [
-                'nullable',
-                Rule::in(['1', '0'])
-            ],
-            'availability' => [
-                'nullable',
-                Rule::in(['1', '0'])
-            ],
+            'visibility' => 'nullable|boolean',
+            'availability' => 'nullable|boolean'
         ];
     }
 

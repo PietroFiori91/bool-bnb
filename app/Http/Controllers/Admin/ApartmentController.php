@@ -47,7 +47,7 @@ class ApartmentController extends Controller
     public function store(ApartmentUpsertRequest $request)
     {
         $data = $request->validated();
-        
+
 
         // $query = $data["address"];
         // $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
@@ -70,21 +70,21 @@ class ApartmentController extends Controller
 
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
-    
+
         $newApartment = new Apartment();
         $newApartment->fill($data);
         $newApartment->save();
-    
+
         // Salva il percorso dell'immagine dopo aver salvato l'appartamento
         if ($request->has('images')) {
             $images_path = Storage::put('apartments', $data['images']);
             $newApartment->update(['images' => $images_path]);
         }
-    
+
         if (key_exists('services', $data)) {
             $newApartment->services()->sync($data['services']);
         }
-    
+
         return redirect()->route("admin.apartments.index");
     }
 
@@ -115,24 +115,32 @@ class ApartmentController extends Controller
     public function update(ApartmentUpsertRequest $request, string $id)
     {
         $apartment = Apartment::findOrFail($id);
+
         $data = $request->validated();
-       
 
-
-      
-        $apartment -> update($data) ;
+        $apartment->update($data);
+    if (isset($data["visibility" && "availability"])) {
+        $apartment->visibility = true;
+        $apartment->availability = true;
+        $apartment->save();
+    }else{
+        $apartment->visibility = false;
+        $apartment->availability = false;
+        $apartment->save();
+    };
+        
 
         // Handle images to delete (if needed)
         if ($request->has('delete_images')) {
             $imagesToDelete = $request->input('delete_images');
         }
-    
-        
+
+
         if ($request->has('images')) {
             $images_path = Storage::put('apartments', $data['images']);
             $apartment->update(['images' => $images_path]);
         }
-    
+
         if (key_exists('services', $data)) {
             $apartment->services()->sync($data['services']);
         }
