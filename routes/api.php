@@ -20,8 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-
 Route::post("contacts", [ContactController::class, "store"]);
 Route::get("apartments",[ApartmentController::class, "index"]);
 Route::get("apartments/{id}", [ApartmentController::class, "show"]);

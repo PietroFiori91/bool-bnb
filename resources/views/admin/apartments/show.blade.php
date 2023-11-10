@@ -34,6 +34,5 @@
             </button>
         </a>
 
-
     </div>
 @endsection
