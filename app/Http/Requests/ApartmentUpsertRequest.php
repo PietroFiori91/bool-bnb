@@ -24,7 +24,7 @@ class ApartmentUpsertRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'images' => 'nullable|image|max:6000',
+            'images' => 'required|image|max:6000',
             'description' => 'required|string',
             'address' => 'required|string',
             'room' => 'required|integer',
@@ -42,9 +42,9 @@ class ApartmentUpsertRequest extends FormRequest
     public function messages(): array{
         return[
             'name.required' => "E' richiesto un nome per l'appartamento"  ,
-            'images.nullable' => "E' neccessario caricare un'immagine" ,
+            'images.required' => "E' neccessario caricare un'immagine" ,
             'description.required' =>"Devi inserire una piccola descrizione" ,
-            'address.reqired' => "L'indirizzo è indispensabile" ,
+            'address.required' => "L'indirizzo è indispensabile" ,
             'room.required' => "Il tuo appartamento non ha camere?" ,
             'bed.required' =>"Ricordati di mettere quanti letti ci sono " ,
             'bathroom.required' =>"E' neccessare specificare il numero di bagni" ,
