@@ -92,7 +92,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Latitudine:</label>
-                        <input type="text" class="form-control" value="{{ old('latitude', $apartments->latitude) }}"
+                        <input type="text" class="form-control" value="{{ old('latitude', $apartment->latitude) }}"
                             name="latitude">
                         @error('latitude')
                             <span class="text-danger">{{ $message }}</span>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Longitudine:</label>
-                        <input type="text" class="form-control" value="{{ old('longitude', $apartments->longitude) }}"
+                        <input type="text" class="form-control" value="{{ old('longitude', $apartment->longitude) }}"
                             name="longitude">
                         @error('longitude')
                             <span class="text-danger">{{ $message }}</span>
@@ -109,6 +109,7 @@
                     <div class="mb-3">
                         <div class="form-check">
 
+                            <input type="hidden" name="visibility" value="0">
                             <input class="form-check-input" type="checkbox" value="1" id="visibility-input"
                                 name="visibility" {{ $apartment->visibility ? 'checked' : '' }}>
                             <label class="form-check-label" for="visibility-input">
@@ -122,6 +123,7 @@
                     <div class="mb-3">
                         <div class="form-check">
 
+                            <input type="hidden" name="availability" value="0">
                             <input class="form-check-input" type="checkbox" value="1" id="availability-input"
                                 name="availability" {{ $apartment->availability ? 'checked' : '' }}>
                             <label class="form-check-label" for="availability-input">

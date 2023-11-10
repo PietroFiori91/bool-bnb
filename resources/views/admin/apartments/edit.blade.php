@@ -118,7 +118,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-check">
-
+                            <input type="hidden" name="visibility" value="0">
                             <input class="form-check-input" type="checkbox" value="1" id="visibility-input"
                                 name="visibility" {{ $apartments->visibility ? 'checked' : '' }}>
                             <label class="form-check-label" for="visibility-input">
@@ -131,7 +131,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-check">
-
+                            <input type="hidden" name="availability" value="0">
                             <input class="form-check-input" type="checkbox" value="1" id="availability-input"
                                 name="availability" {{ $apartments->availability ? 'checked' : '' }}>
                             <label class="form-check-label" for="availability-input">

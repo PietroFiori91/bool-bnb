@@ -117,18 +117,27 @@ class ApartmentController extends Controller
         $apartment = Apartment::findOrFail($id);
 
         $data = $request->validated();
+        $data["visibility"] = boolval($data["visibility"]);
+        $data["availability"] = boolval($data["availability"]);
+        // dd($data);
 
+        if ($data["visibility"]) {
+            $apartment->visibility = true;
+            // $apartment->availability = true;
+            $apartment->save();
+        } else {
+            $apartment->visibility = false;
+            // $apartment->availability = false;
+            $apartment->save();
+        };
+        if ($data["availability"]) {
+
+            $apartment->availability = true;
+        } else {
+
+            $apartment->availability = false;
+        };
         $apartment->update($data);
-    if (isset($data["visibility" && "availability"])) {
-        $apartment->visibility = true;
-        $apartment->availability = true;
-        $apartment->save();
-    }else{
-        $apartment->visibility = false;
-        $apartment->availability = false;
-        $apartment->save();
-    };
-        
 
         // Handle images to delete (if needed)
         if ($request->has('delete_images')) {
