@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApartmentUpsertRequest;
 use App\Models\Apartment;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -43,42 +44,29 @@ class ApartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ApartmentUpsertRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'images' => 'nullable|image|max:6000',
-            'description' => 'required|string',
-            'address' => 'required|string',
-            'room' => 'required|integer',
-            'bed' => 'required|integer',
-            'bathroom' => 'required|integer',
-            'mq' => 'required|numeric',
-            'latitude' => 'nullable|string',
-            'longitude' => 'nullable|string',
-            'visibility' => 'nullable|boolean',
-            'availability' => 'nullable|boolean',
-            'services' => 'required|min:1',
-        ]);
+        $data = $request->validated();
+        
 
-        $query = $data["address"];
-        $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
+        // $query = $data["address"];
+        // $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
 
-        $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
-            'query' => $query,
-            'key' => $key,
-        ]);
+        // $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
+        //     'query' => $query,
+        //     'key' => $key,
+        // ]);
 
-        $geocodingData = $response->json();
+        // $geocodingData = $response->json();
 
-        if (!empty($geocodingData['results'])) {
-            $location = $geocodingData['results'][0]['position'];
-            $data['latitude'] = $location['lat'];
-            $data['longitude'] = $location['lon'];
-        } else {
-            session()->flash('error', 'Indirizzo non valido. Per favore, inserisci un indirizzo valido.');
-            return redirect()->route("admin.apartments.create");
-        }
+        // if (!empty($geocodingData['results'])) {
+        //     $location = $geocodingData['results'][0]['position'];
+        //     $data['latitude'] = $location['lat'];
+        //     $data['longitude'] = $location['lon'];
+        // } else {
+        //     session()->flash('error', 'Indirizzo non valido. Per favore, inserisci un indirizzo valido.');
+        //     return redirect()->route("admin.apartments.create");
+        // }
 
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
@@ -124,35 +112,14 @@ class ApartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ApartmentUpsertRequest $request, string $id)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'images' => 'nullable|image|max:6000',
-            'description' => 'required|string',
-            'address' => 'required|string',
-            'room' => 'required|integer',
-            'bed' => 'required|integer',
-            'bathroom' => 'required|integer',
-            'mq' => 'required|numeric',
-            'latitude' => 'required|string',
-            'longitude' => 'required|string',
-            'services' => 'required|min:1',
-            'visibility' => [
-                'required',
-                Rule::in(['1', '0'])
-            ],
-            'availability' => [
-                'required',
-                Rule::in(['1', '0'])
-            ],
-        ]);
-
-
         $apartment = Apartment::findOrFail($id);
-        // $newApartment = new Apartment();
-        // $newApartment->fill($data);
-        // $newApartment->save();
+        $data = $request->validated();
+       
+
+
+      
         $apartment -> update($data) ;
 
         // Handle images to delete (if needed)
@@ -160,10 +127,7 @@ class ApartmentController extends Controller
             $imagesToDelete = $request->input('delete_images');
         }
     
-        // Handle images to update or add
-        // if ($request->has('images')) {
-        //     $images_path = Storage::put('apartments', $data['images']);
-        // }
+        
         if ($request->has('images')) {
             $images_path = Storage::put('apartments', $data['images']);
             $apartment->update(['images' => $images_path]);
