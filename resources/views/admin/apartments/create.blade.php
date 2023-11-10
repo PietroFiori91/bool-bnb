@@ -15,9 +15,11 @@
                                 id="flexCheckDefault">
                         </div>
                     @endforeach
-                    @error('services')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <div class="mb-3">
+                        @error('services')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                     <div class="mb-3">
                         <label class="form-label">Nome: </label>
@@ -88,41 +90,49 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Latitudine:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="latitude"
-                            value="{{ old('latitude') }}">
+                        <input type="text" class="form-control" value="{{ old('latitude', $apartment->latitude) }}"
+                            name="latitude">
                         @error('latitude')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label class="form-label">Longitudine:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="longitude"
-                            value="{{ old('longitude') }}">
+                        <input type="text" class="form-control" value="{{ old('longitude', $apartment->longitude) }}"
+                            name="longitude">
                         @error('longitude')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-                    </div> --}}
-
-                    <div class="mb-3">
-                        <label class="form-label">Visibile: </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="visibility"
-                            value="{{ old('visibility') }}">
-                        @error('visibility')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
-
                     <div class="mb-3">
-                        <label class="form-label">Disponibile: </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="availability"
-                            value="{{ old('availability') }}">
-                        @error('availability')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <div class="form-check">
+
+                            <input type="hidden" name="visibility" value="0">
+                            <input class="form-check-input" type="checkbox" value="1" id="visibility-input"
+                                name="visibility" {{ $apartment->visibility ? 'checked' : '' }}>
+                            <label class="form-check-label" for="visibility-input">
+                                Visibile
+                            </label>
+                            @error('visibility')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+
+                            <input type="hidden" name="availability" value="0">
+                            <input class="form-check-input" type="checkbox" value="1" id="availability-input"
+                                name="availability" {{ $apartment->availability ? 'checked' : '' }}>
+                            <label class="form-check-label" for="availability-input">
+                                Disponibile
+                            </label>
+                            @error('availability')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
                     <button class="btn btn-primary">Salva</button>
