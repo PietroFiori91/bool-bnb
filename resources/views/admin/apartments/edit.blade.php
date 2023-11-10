@@ -18,15 +18,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="mb-3 form-check-inline">
-                            <label class="form-check-label" for="flexCheckDefault">{{ $service->name }}</label>
-                            <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
-                                id="flexCheckDefault" {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
-                            @error('services')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            {{-- @dd($apartments->services) --}}
-                        </div>
+                    
                     @endforeach
                     @error('services')
                         <span class="text-danger">{{ $message }}</span>
