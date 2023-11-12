@@ -4,3 +4,19 @@
 // @use"./partials/show.scss";
 // @use "@fortawesome/fontawesome-free/css/all.min.scss";
 
+.gallery {
+    color: #001632;
+  }
+  
+  .gallery a {
+    text-decoration: none;
+    color: #001632;
+  }
+  
+  .carousel-indicators button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 5px;
+      background-color: #888; /* Colore di sfondo dei pallini non attivi */
+  }
