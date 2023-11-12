@@ -47,7 +47,7 @@
                             <span class="text-decoration-none"> <a class="text-decoration-none p-2 text-center text-black"
                                     href="/admin/apartments/{{ $apartment->id }}">{{ $apartment['name'] }}</a></span>
                             <span class="text-decoration-none">{{ $apartment->address }}</span>
-                            <span class="text-decoration-none">{{ $apartment->description }}</span>
+                          
 
                         </div>
                         <div class="p-2 d-flex justify-content-center justify-content-end">
