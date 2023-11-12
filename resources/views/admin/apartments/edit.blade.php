@@ -24,7 +24,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-
+ 
                     <div class="mb-3">
                         <label class="form-label">Name: </label>
                         <input type="text" class="form-control" value="{{ old('name', $apartments->name) }}"
