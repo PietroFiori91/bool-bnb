@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-   public function index(){
+   public function index(Request $request){
     // recupero i dati dal database
     $apartments = Apartment::with(["user", "services"])->get();
 
