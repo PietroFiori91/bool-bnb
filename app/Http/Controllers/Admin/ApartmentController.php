@@ -49,7 +49,7 @@ class ApartmentController extends Controller
         $data = $request->validated();
 
 
-        $query = $data["address"];
+        $query = $data["address"];                              //l'indirizzo inserito dall'utente viene usato come query dell'API di TomTom
         $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
 
         $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
@@ -57,8 +57,10 @@ class ApartmentController extends Controller
             'key' => $key,
         ]);
 
-        $geocodingData = $response->json();
+        $geocodingData = $response->json();                                 //la risposta dell'API è un .json che viene assegnato ad una variabile
 
+//l'indirizzo inserito dall'utente viene usato come query dell'API di TomTom, vengono caricate le "lat" e "lon" contenute in "position" in una variabile
+//"lat" e "lon" vengono caricate nel database
         if (!empty($geocodingData['results'])) {
             $location = $geocodingData['results'][0]['position'];
             $data['latitude'] = $location['lat'];
