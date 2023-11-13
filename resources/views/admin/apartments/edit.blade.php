@@ -18,13 +18,13 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    
+
                     @endforeach
                     @error('services')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
- 
+
                     <div class="mb-3">
                         <label class="form-label">Name: </label>
                         <input type="text" class="form-control" value="{{ old('name', $apartments->name) }}"
@@ -136,7 +136,7 @@
                     </div>
 
                     <button class="btn btn-primary">Salva</button>
-                    <a href="{{ route('admin.apartments.index') }}"><button class="btn btn-danger">Annulla</button></a>
+                    <button class="btn btn-danger"><a  class="text-decoration-none text-white" href="{{ route('admin.apartments.index') }}">Annulla</a></button>
                 </form>
             </div>
         </div>

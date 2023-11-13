@@ -1,16 +1,48 @@
 .gallery {
     color: #001632;
+    padding-top: 71px;
   }
-  
+
   .gallery a {
     text-decoration: none;
     color: #001632;
   }
-  
+
+  .carousel-inner img {
+    aspect-ratio: 1/1;
+  }
+
   .carousel-indicators button {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin: 0 5px;
-      background-color: #888; /* Colore di sfondo dei pallini non attivi */
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: #888;
+    /* Colore di sfondo dei pallini non attivi */
+  }
+
+  /* Nascondi le frecce direzionali all'inizio */
+  .carousel-control-prev,
+  .carousel-control-next {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Mostra le frecce direzionali quando il mouse è sopra il carosello */
+  .carousel:hover .carousel-control-prev,
+  .carousel:hover .carousel-control-next {
+    opacity: .8;
+  }
+
+  /* Stile per le frecce direzionali */
+  .carousel-control-prev,
+  .carousel-control-next {
+    font-size: 1rem;
+    /* Regola la dimensione delle frecce */
+    color: #fff;
+    /* Colore delle frecce */
+    background: transparent;
+    /* Sfondo trasparente */
+    border: none;
+    /* Senza bordo */
+    outline: none;
+    /* Senza contorno */
   }
