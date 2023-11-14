@@ -135,8 +135,8 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-primary">Salva</button>
-                    <button class="btn btn-danger"><a  class="text-decoration-none text-white" href="{{ route('admin.apartments.index') }}">Annulla</a></button>
+                    <button class="btn btn-sm m-2 btn-primary">Salva</button>
+                    <button class="btn btn-sm m-2 btn-danger"><a class="text-decoration-none text-white" href="{{ route('admin.apartments.index') }}">Annulla</a></button>
                 </form>
             </div>
         </div>

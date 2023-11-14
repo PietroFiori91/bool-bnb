@@ -55,7 +55,6 @@
 
     <div class="container py-5 mx-auto d-flex justify-content-center">
         <a href="/" class="btn btn-warning btn-sm" type="button">Torna in Home</a>
-        <a href="{{ route('admin.apartments.create') }}">
-            <button class="btn btn-primary btn-sm mx-1">Nuovo Appartamento</button></a>
+        <a href="{{ route('admin.apartments.create') }}"><button class="btn btn-primary btn-sm mx-1">Nuovo Appartamento</button></a>
     </div>
 @endsection
