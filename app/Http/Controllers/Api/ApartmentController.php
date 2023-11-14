@@ -13,25 +13,25 @@ class ApartmentController extends Controller
     // recupero i dati dal database
     $apartments = Apartment::with(["user", "services"])->get();
 
-    $query = $request->input('address');                                //viene assegnata alla $query, l'input di ricerca dell'utente
-    $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
+    // $query = $request->input('address');                                //viene assegnata alla $query, l'input di ricerca dell'utente
+    // $key = 'G3UqwADY39DYhuxHmuH49Pv68jOXjJTW';
 
-    $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
-        'query' => $query,
-        'key' => $key,
-    ]);
+    // $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
+    //     'query' => $query,
+    //     'key' => $key,
+    // ]);
 
-    $geocodingData = $response->json();                                 //la risposta dell'API è un .json che viene assegnato ad una variabile
+    // $geocodingData = $response->json();                                 //la risposta dell'API è un .json che viene assegnato ad una variabile
 
-    if (!empty($geocodingData['results'])) {
-        $location = $geocodingData['results'][0]['position'];
-        $latitude = $location['lat'];                                   //"lat" viene assegnata alla variabile "$latitude" richiamabile nel frontend
-        $longitude = $location['lon'];
+    // if (!empty($geocodingData['results'])) {
+    //     $location = $geocodingData['results'][0]['position'];
+    //     $latitude = $location['lat'];                                   //"lat" viene assegnata alla variabile "$latitude" richiamabile nel frontend
+    //     $longitude = $location['lon'];
 
-        return response()->json(['latitude' => $latitude, 'longitude' => $longitude]);
-    } else {
-        return response()->json(['error' => 'Indirizzo non valido. Per favore, inserisci un indirizzo valido.'], 422);
-    }
+    //     return response()->json(['latitude' => $latitude, 'longitude' => $longitude]);
+    // } else {
+    //     return response()->json(['error' => 'Indirizzo non valido. Per favore, inserisci un indirizzo valido.'], 422);
+    // }
 
      return response()->json($apartments);
    }
