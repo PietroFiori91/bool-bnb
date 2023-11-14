@@ -88,22 +88,6 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Latitudine:</label>
-                        <input type="text" class="form-control" value="{{ old('latitude', $apartment->latitude) }}"
-                            name="latitude">
-                        @error('latitude')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Longitudine:</label>
-                        <input type="text" class="form-control" value="{{ old('longitude', $apartment->longitude) }}"
-                            name="longitude">
-                        @error('longitude')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
                         <div class="form-check">
 
                             <input type="hidden" name="visibility" value="0">
@@ -130,14 +114,12 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <button class="btn btn-primary">Salva</button>
-
                     </div>
 
                     <button class="btn btn-primary">Salva</button>
                     <button class="btn btn-danger"><a  class="text-decoration-none text-white" href="{{ route('admin.apartments.index') }}">Annulla</a></button>
                 </form>
-                <a href="{{ route('apartments.index') }}"><button class="btn btn-danger">Annulla</button></a>
+
             </div>
         </div>
     </div>
