@@ -32,7 +32,7 @@ class Apartment extends Model
         'mq',
         'latitude',
         'longitude',
-       
+
     ];
 
     use HasFactory;
