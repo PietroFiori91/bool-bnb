@@ -2,15 +2,10 @@
 
 @section('content')
     <div class="container">
-        <form class="mt-3 mb-3" action="{{ route('admin.apartments.destroy', $apartments->id) }}" method="POST">
-            @csrf()
-            @method('DELETE')
-            <button class="btn btn-danger" type="submit" name="name">Elimina</button>
-        </form>
         <h1>{{ $apartments->name }}</h1>
 
-        <img style="width: 310px" src=" {{ asset('/storage/' . $apartments->images)}}" alt="">
-        
+        <img style="width: 310px" src=" {{ asset('/storage/' . $apartments->images) }}" alt="">
+
         <p><strong>Description:</strong> {{ $apartments->description }}</p>
         <p><strong>Address:</strong> {{ $apartments->address }}</p>
         <div class="">
@@ -18,7 +13,7 @@
             @foreach ($apartments->services as $service)
                 <div class="d-flex align-items-center">
                     <i class="p-2 fa-solid {{ $service->icon }}"></i>
-                    <p>{{ $service->name }}</p>
+                    <p class="p-2 m-0">{{ $service->name }}</p>
                 </div>
             @endforeach
         </div>
@@ -26,13 +21,17 @@
         <p><strong>Rooms:</strong> {{ $apartments->room }}</p>
         <p><strong>Beds:</strong> {{ $apartments->bed }}</p>
 
-        <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary">Back to List</a>
+        <div class="d-flex">
+            <a href="{{ route('admin.apartments.index') }}" class="btn btn-sm m-2 btn-primary">Back to List</a>
+            <a href="{{ route('admin.apartments.edit', $apartments->id) }}"><button class="btn btn-sm m-2 btn-primary">Modifica</button></a>
 
-        <a href="{{ route('api.sponsors.index', ['apartment' => $apartments]) }}" class="tip">
-            <button class="btn btn-warning">
-                Sponsorizza
-            </button>
-        </a>
+            {{-- <button class="btn btn-warning"><a class="tip" href="{{ route('api.sponsors.index', ['apartment' => $apartments]) }}">Sponsorizza</a></button> --}}
+            <form action="{{ route('admin.apartments.destroy', $apartments->id) }}" method="POST">
+                @csrf()
+                @method('DELETE')
+                <button class="btn btn-sm m-2 btn-danger" type="submit" name="name">Elimina</button>
+            </form>
+        </div>
 
     </div>
 @endsection
