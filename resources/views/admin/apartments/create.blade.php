@@ -130,11 +130,13 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <button class="btn btn-primary">Salva</button>
+                       
                     </div>
 
-                    <button class="btn btn-primary">Salva</button>
-                    <a href="{{ route('admin.apartments.index') }}"><button class="btn btn-danger">Annulla</button></a>
+                   
                 </form>
+                <a href="{{ route('apartments.index') }}"><button class="btn btn-danger">Annulla</button></a>
             </div>
         </div>
     </div>

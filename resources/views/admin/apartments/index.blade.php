@@ -47,10 +47,11 @@
                             <span class="text-decoration-none"> <a class="text-decoration-none p-2 text-center text-black"
                                     href="/admin/apartments/{{ $apartment->id }}">{{ $apartment['name'] }}</a></span>
                             <span class="text-decoration-none">{{ $apartment->address }}</span>
-                          
+
 
                         </div>
-                        <div class="p-2 d-flex justify-content-center justify-content-end">
+
+                        <div class="p-2 d-flex justify-content-center ">
                             <a href="{{ route('admin.apartments.edit', $apartment->id) }}">
                                 <button class="btn btn-md m-2 btn-primary">Modifica</button></a>
                             <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST">
@@ -59,13 +60,10 @@
                                 <button class="btn btn-btn-md m-2 btn-danger" type="submit" name="name">Elimina</button>
                             </form>
                         </div>
-
                     </div>
-                   
+
                 </div>
             @endforeach
         </div>
-    </div>
-
-    
+    </div> 
 @endsection

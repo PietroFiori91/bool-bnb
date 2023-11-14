@@ -13,7 +13,8 @@ class Message extends Model
         "apartment_id",
         'name',
         'email',
-        'message'
+        'message',
+        'apartment_id'
     ];
     public function apartment(){
         return $this->belongsTo(Apartment::class);
