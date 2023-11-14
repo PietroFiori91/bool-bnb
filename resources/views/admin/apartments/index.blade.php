@@ -37,7 +37,7 @@
                             <span class="text-decoration-none mt-2">{{ $apartment['name'] }}</span>
                             <span class="text-decoration-none mt-2">{{ $apartment->address }}</span>
                         </div>
-                        {{-- <div class="p-2 d-flex justify-content-center justify-content-end">
+                        <div class="p-2 d-flex justify-content-center justify-content-end">
                             <a href="{{ route('admin.apartments.edit', $apartment->id) }}">
                                 <button class="btn btn-sm m-2 btn-primary">Modifica</button></a>
                             <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST">
@@ -45,8 +45,7 @@
                                 @method('DELETE')
                                 <button class="btn btn-sm m-2 btn-danger" type="submit" name="name">Elimina</button>
                             </form>
-                        </div> --}}
-
+                        </div>
                     </div>
 
                 </div>
