@@ -1,19 +1,4 @@
-<?php
-
-namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Support\Str;
-use Illuminate\Database\Seeder;
-use App\Models\Apartment;
-use App\Models\Image;
-use App\Models\Service;
-use App\Models\Sponsor;
-use App\Models\User;
-
-class ApartmentsTableSeeder extends Seeder
-{
-    private $apartments = [
+private $apartments = [
         [
             "user_id" => 1,
             "name" => "Tenuta costiera con vasca idromassaggio e vista sull'oceano",
@@ -393,34 +378,3 @@ class ApartmentsTableSeeder extends Seeder
             "availability" => true,
         ],
     ];
-    /**
-     * Run the database seeds.
-     *
-     */
-    public function run(): void {
-
-        // $apartments = config('boolbnb.store'); // Legge la API dalla config
-
-
-        foreach ($this->apartments as $apartment)  {
-
-            $newApartment = new Apartment();
-            $newApartment->name = $apartment['name'];
-            $newApartment->address = $apartment['address'];
-            $newApartment->description = $apartment['description'];
-            $newApartment->room = $apartment['room'];
-            $newApartment->bed = $apartment['bed'];
-            $newApartment->bathroom = $apartment['bathroom'];
-            $newApartment->mq = $apartment['mq'];
-            $newApartment->latitude = $apartment['latitude'];
-            $newApartment->longitude = $apartment['longitude'];
-            $newApartment->visibility = $apartment['visibility'];
-            $newApartment->availability = $apartment['availability'];
-
-            // $newApartment->slug = Apartment::generateSlug($newApartment->name);
-
-            $newApartment->save();
-
-        }
-    }
-}

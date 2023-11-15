@@ -4,8 +4,8 @@
     <div class="gallery">
         <div class="row p-3 d-flex justify-content-center">
             <div class="container py-5 mx-auto d-flex justify-content-center">
-                <a href="/" class="btn btn-primary btn-lg" type="button">Torna in Home</a>
-                <a href="{{ route('admin.apartments.create') }}"><button class="btn btn-primary btn-lg mx-1">Nuovo
+                <a href="/" class="btn btn-warning btn-md" type="button">Torna in Home</a>
+                <a href="{{ route('admin.apartments.create') }}"><button class="btn btn-primary btn-md mx-1">Nuovo
                         appartamento</button></a>
             </div>
             @foreach ($apartments as $apartment)
