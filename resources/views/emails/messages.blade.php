@@ -18,7 +18,7 @@
                                     {{ $apartment->name }}
                                 </button>
                             </h2>
-                       
+
                         </div>
                     @endforeach
 
@@ -50,7 +50,7 @@
                     <td> {{ $message->created_at }}</td>
 
                 </tr>
-             
+            </tbody>
         @endforeach
         </tbody>
 
