@@ -33,16 +33,16 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label class="form-label">Immagini esistenti:</label>
-                        {{-- @foreach ($apartments->images as $image)
+                        @foreach ($apartments->images as $image)
                             <div>
                                 <img src="{{ $image->url }}" alt="{{ $image->name }}" style="max-width: 100px;">
                                 <input type="checkbox" name="delete_images[]" value="{{ $image->id }}"> Elimina questa
                                 immagine
                             </div>
-                        @endforeach --}}
-                    </div>
+                        @endforeach
+                    </div> --}}
                     <div class="mb-3">
                         <label class="form-label">Aggiungi nuove immagini:</label>
                         <input type="file" class="form-control" name="images" multiple>
@@ -92,7 +92,7 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label class="form-label">Latitudine:</label>
                         <input type="text" class="form-control" value="{{ old('latitude', $apartments->latitude) }}"
                             name="latitude">
@@ -107,7 +107,7 @@
                         @error('longitude')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <div class="form-check">
                             <input type="hidden" name="visibility" value="0">

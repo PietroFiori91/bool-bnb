@@ -20,6 +20,7 @@ class ApartmentsTableSeeder extends Seeder
             "address" => "590 Ave Alhambra, Half Moon Bay, CA, 94019, Stati Uniti",
             "description" => "Raggiungi a piedi le migliori spiagge statali della zona, i ristoranti premiati, il porto di Half Moon Bay, le escursioni a piedi lungo il California Coastal Trail, le attività per famiglie nella zona e molto altro ancora.",
             "room" => 3,
+            "images" => "",
             "bed" => 9,
             "bathroom" => 2,
             "mq" => 100,
@@ -36,6 +37,7 @@ class ApartmentsTableSeeder extends Seeder
             Situata ai margini del Pacifico, questa splendida villa è stata progettata e costruita da zero per unirvi alla bellezza e alla pace delle acque circostanti.
             Nuova costruzione completata nel 2020 e arredamento curato professionalmente comprende ogni angolo della villa.",
             "room" => 4,
+            "images" => "",
             "bed" => 6,
             "bathroom" => 4.5,
             "mq" => 300,
@@ -51,6 +53,7 @@ class ApartmentsTableSeeder extends Seeder
             "description" => "Presentato da Sunset Magazine come una 'fuga chic'.
             All'interno, i mobili e i dettagli architettonici della metà del secolo sono realizzati con materiali naturali come legno e pietra che creano un tono rilassante e sacro. Rannicchiati con una buona lettura dalla luce che scorre attraverso le finestre dal pavimento al soffitto e sotto le travi di legno svettanti o rimboccati le coperte per la sera chiudendo le porte scorrevoli ispirate agli schermi giapponesi.",
             "room" => 3,
+            "images" => "",
             "bed" => 3,
             "bathroom" => 1,
             "mq" => 220,
@@ -65,6 +68,7 @@ class ApartmentsTableSeeder extends Seeder
             "address" => "307 Genevieve Ave, Pacifica, CA, 94044, Stati Uniti",
             "description" => "Nascosta nella tranquilla e pittoresca valle di Vallemar, questa casa in legno di cedro di Lindahl offre serenità e comodità, con un rapido accesso a molti punti di viaggio. Questa casa ha un elegante design interno dello chalet, l'ampio soggiorno dispone di lucernari e ampie finestre, con accesso diretto alla terrazza del cortile e a una vasca idromassaggio. Goditi una tazza di tè ammirando la miracolosa bellezza della foresta e delle montagne che ti circondano; potresti persino avvistare occasionalmente un cervo o una volpe.",
             "room" => 3,
+            "images" => "",
             "bed" => 4,
             "bathroom" => 3,
             "mq" => 650,
@@ -79,6 +83,7 @@ class ApartmentsTableSeeder extends Seeder
             "address" => "3198 Patio Dr, Pebble Beach, CA, 93953, Stati Uniti",
             "description" => "La foresta di Del Monte ispira la forma di questa residenza contemporanea californiana. Una capanna all'aperto riecheggia le linee rette degli alberi più alti, l'area lounge si estende sotto i rami tortuosi e, all'interno, danze luminose soffuse con le foglie su un tappeto verde muschio e pannelli in legno. 3 campi da golf, tra cui Pebble Beach, e 2 spiagge in 10 minuti ti faranno prendere il via e la sabbia.",
             "room" => 3,
+            "images" => "",
             "bed" => 3,
             "bathroom" => 3,
             "mq" => 800,
@@ -93,6 +98,7 @@ class ApartmentsTableSeeder extends Seeder
             "address" => "160 Los Trancos Cir, Portola Valley, CA, 94028, Stati Uniti",
             "description" => "Casa spaziosa e tranquilla nella Valle di Portola. Goditi la vasta terrazza all'aperto, accomodati vicino al camino, ammira gli alberi imponenti attraverso le splendide finestre panoramiche della casa o semplicemente rilassati nello spazio pulito, moderno e completamente arredato. I rinomati sentieri di Portola Valley che si affacciano sulla baia di San Francisco si trovano a soli 100 passi di distanza.",
             "room" => 5,
+            "images" => "",
             "bed" => 5,
             "bathroom" => 4,
             "mq" => 350,
@@ -107,6 +113,7 @@ class ApartmentsTableSeeder extends Seeder
             "address" => "731 Lovell Ave, Mill Valley, CA, 94941, Stati Uniti",
             "description" => "Siamo amanti della natura e abbiamo comprato la casa dei nostri sogni tra le sequoie ai piedi del Monte Tam e ora lo condividiamo con i viaggiatori che apprezzano l'architettura e lo stile di vita all'interno e all'esterno della California settentrionale! Costruita dal visionario architetto biologico Daniel Lieberman nel 1962 su sequoie e vetri secolari, la casa è una composizione piena di spazi aperti ancorati a un camino centrale, simile al lavoro del mentore di Lieberman, Frank Lloyd Wright.",
             "room" => 3,
+            "images" => "",
             "bed" => 2,
             "bathroom" => 3.5,
             "mq" => 280,
@@ -121,6 +128,7 @@ class ApartmentsTableSeeder extends Seeder
             "address" => "3562 Golden State Dr, Santa Clara, CA, 95051, Stati Uniti",
             "description" => "Gioca e lavora in questo splendido rambler di 2100 metri quadrati a pochi minuti da Big Tech, Levi Stadium, Great America e tutto ciò che c'è di fantastico nella Bay Area. Master suite, più 2 camere da letto e un ufficio con 2 postazioni di lavoro e un futon per 8 persone. Goditi la cucina gourmet mentre ascolti la tua stazione Spotify preferita sul sistema di intrattenimento utilizzando l'app Onkyo. LG 55 in schermo piatto e camino fuori dalla cucina. Patio anteriore per il caffè del mattino e vasca idromassaggio per rilassarsi. Custode in loco nell'unità collegata.",
             "room" => 4,
+            "images" => "",
             "bed" => 4,
             "bathroom" => 2,
             "mq" => 2100,
@@ -137,6 +145,7 @@ class ApartmentsTableSeeder extends Seeder
             Dalla scintillante piscina e spa a forma di cavalluccio marino, al pavimento del bagno fatto di pochi centesimi, l'unicità, il comfort e la gioia di questa casa ti lascerà sicuramente sorridente.
             Willow Glen, San Jose è vicino a negozi, cibo e autostrade.",
             "room" => 3,
+            "images" => "",
             "bed" => 4,
             "bathroom" => 2.5,
             "mq" => 500,
@@ -146,6 +155,7 @@ class ApartmentsTableSeeder extends Seeder
             "availability" => true,
         ],
         [
+            "images" => "",
             "user_id" => 1,
             "name" => "Log-Cabin Home Retreat nella foresta",
             "address" => "123 Skylonda Dr, Woodside, CA, 94062, Stati Uniti",
@@ -416,6 +426,7 @@ class ApartmentsTableSeeder extends Seeder
             $newApartment->longitude = $apartment['longitude'];
             $newApartment->visibility = $apartment['visibility'];
             $newApartment->availability = $apartment['availability'];
+            $newApartment->user_id = $apartment['user_id'];
 
             // $newApartment->slug = Apartment::generateSlug($newApartment->name);
 
