@@ -12,8 +12,8 @@
             <p><strong>services:</strong></p>
             @foreach ($apartments->services as $service)
                 <div class="d-flex align-items-center">
-                    <i class="p-2 fa-solid {{ $service->icon }}"></i>
-                    <p class="p-2 m-0">{{ $service->name }}</p>
+                    <i class="fa-solid {{ $service->icon }}"></i>
+                    <p>{{ $service->name }}</p>
                 </div>
             @endforeach
         </div>
