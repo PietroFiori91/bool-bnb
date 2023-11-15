@@ -58,6 +58,7 @@
                                 @csrf()
                                 @method('DELETE')
                                 <button class="btn btn-btn-md m-2 btn-danger" type="submit" name="name">Elimina</button>
+                                <button class="btn btn-btn-md m-2 btn-danger" type="submit" name="name"><a class="nav-link" href="{{ route('admin.messages') }}">Inviaci un messaggio</a></button>
                             </form>
                         </div>
 
