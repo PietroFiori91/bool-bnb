@@ -14,7 +14,7 @@ class servicesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         $services = [
             [
                 'name' => 'Cucina',
@@ -34,7 +34,7 @@ class servicesTableSeeder extends Seeder
             [
                 'name' => 'Posate',
                 'description' => '',
-                'icon' => 'a-utensils',
+                'icon' => 'fa-utensils',
             ],
             [
                 'name' => 'caffè',
@@ -111,7 +111,7 @@ class servicesTableSeeder extends Seeder
                 'description' => 'Asciugamani, lenzuola, sapone e carta igienica',
                 'icon' => 'fa-pump-soap',
             ],
-            
+
         ];
 
                 foreach ($services as $service) {
