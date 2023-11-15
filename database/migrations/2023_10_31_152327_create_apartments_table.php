@@ -20,8 +20,8 @@ return new class extends Migration
             $table->tinyInteger("bed");
             $table->tinyInteger("bathroom");
             $table->integer("mq");
-            $table->string("latitude");
-            $table->string("longitude");
+            $table->decimal("latitude", 11, 8);
+            $table->decimal("longitude", 11, 8);
             $table->boolean("visibility")->default(true);
             $table->boolean("availability")->default(false);
             $table->timestamps();
