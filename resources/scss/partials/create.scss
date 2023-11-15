@@ -30,18 +30,18 @@ video::-webkit-media-controls-panel {
 }
 
 .paggina {
-    height: 93vh;
-
-}
-
-.avanti {
-    height: 6vh;
-    margin-bottom: 300px;
-}
-
-.paggina-pena {
     height: 100vh;
+
 }
+
+// .avanti {
+//     height: 6vh;
+//     margin-bottom: 300px;
+// }
+
+// .paggina-pena {
+//     height: 100vh;
+// }
 
 
 ::-webkit-scrollbar {
@@ -67,6 +67,9 @@ video::-webkit-media-controls-panel {
     margin-right: 30px;
 }
 
+img {
+    width: 40px;
+}
 .file-input-container {
     position: relative;
     width: 600px;
@@ -99,3 +102,24 @@ video::-webkit-media-controls-panel {
     cursor: pointer;
 }
 
+
+.container-dati  {
+    width: 800px;
+}
+
+
+
+form {
+    color: #001632;
+}
+
+
+
+button.btn {
+    background-color: #001632;
+}
+
+a {
+    // background-color: transparent;
+    color: #001632;
+}
