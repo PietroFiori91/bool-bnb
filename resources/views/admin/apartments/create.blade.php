@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-{{-- @section('content') 
+{{-- @section('content')
     <div class="container py-4">
         <div class="row">
             <div class="col">
@@ -122,7 +122,7 @@
 
             </div>
         </div>
-    </div> 
+    </div>
     @endsection --}}
 
 
@@ -130,7 +130,7 @@
 
     <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        
+
         <div class="nav">
             <img src="" alt="">
         </div>
@@ -138,7 +138,7 @@
 
         <div class="container container-uno paggina paggina-pena">
             <div class="row">
-                
+
                 <div class="col-12  d-flex justify-content-center align-items-center ">
                     <div class="col-6 sotto-uno">
                         <p><strong>Primo</strong></p>
@@ -153,6 +153,7 @@
                             <source class="d-block"
                                 src="https://stream.media.muscache.com/zFaydEaihX6LP01x8TSCl76WHblb01Z01RrFELxyCXoNek.mp4?v_q=high"
                                 type="video/mp4">
+                                <img src="../../../../public/assets/img/IMG_20230909_111036.jpg" alt="">
                         </video>
                     </div>
                 </div>
@@ -186,7 +187,7 @@
                 @foreach ($services as $service)
                     <div class="mb-3 col-3 p-2 form-check-inline">
                         <label class="form-check-label" for="service_{{ $service->id }}"><i class="fa-solid {{ $service->icon }}"></i>  {{ $service->name }}</label>
-                       
+
                         <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
                             id="flexCheckDefault">
                     </div>
@@ -203,8 +204,8 @@
 
 
             </div>
-        
-    
+
+
     <script>
         function mostraTerzaSezione() {
             document.querySelector('.cont-2').style.display = 'none';
@@ -228,7 +229,7 @@
 
 
 <div class=" ">
-    <di class="container terza-sezione ">
+    <div class="container terza-sezione ">
         <div class="row">
             {{-- <div class="mb-3">
                 <h4>Aggiungi foto del tuo alloggio (categoria: casa)</h4>
@@ -251,7 +252,7 @@
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
-            
+
         </div>
     </div>
 
@@ -261,7 +262,7 @@
             document.querySelector('.Quarta-sezione').style.display = 'block';
         }
     </script>
-    
+
     <div class="d-flex align-items-end btn-sotto  justify-content-between">
         <button class="btn btn-link d-flex  align-items-end m-5 "><a  class="text-decoration-none text-black" href="{{ route('admin.apartments.index') }}">iIndietro</a></button>
         <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end" onclick="mostraQuartaSezione()">Avanti</button>
@@ -374,7 +375,7 @@
             document.querySelector('.Cuinto-sezione').style.display = 'block';
         }
     </script>
-    
+
     <div class="d-flex align-items-end btn-sotto  justify-content-between">
         <button class="btn btn-link d-flex  align-items-end m-5 "><a  class="text-decoration-none text-black" href="{{ route('admin.apartments.index') }}">iIndietro</a></button>
         <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end" onclick="mostraCuintoSezione()">Avanti</button>

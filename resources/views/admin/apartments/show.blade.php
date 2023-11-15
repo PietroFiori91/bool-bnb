@@ -6,7 +6,7 @@
 
         <img style="width: 310px" src=" {{ asset('/storage/' . $apartments->images) }}" alt="">
 
-        <p><strong>Description:</strong> {{ $apartments->description }}</p>
+        <p><strong>Descrizione:</strong> {{ $apartments->description }}</p>
         <p><strong>Address:</strong> {{ $apartments->address }}</p>
         <div class="">
             <p><strong>services:</strong></p>
