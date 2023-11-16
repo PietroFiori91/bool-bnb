@@ -2,9 +2,13 @@
     color: #001632;
     padding: 56px;
     width: 65%;
-    min-height: 65%;
     box-shadow: 0 0 2px 0 rgba(#000, .2), 0 5px 10px 0 rgba(#000, .1);
 }
+
 .bg-image {
     background-color: #fff;
+}
+
+.dashboard-bg {
+    height: calc(100vh - 58px);
 }
