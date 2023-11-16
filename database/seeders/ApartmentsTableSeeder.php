@@ -29,6 +29,7 @@ class ApartmentsTableSeeder extends Seeder
             "longitude" => -122.28068,
             "visibility" => true,
             "availability" => true,
+            "images" => 'mtS678DT1ufGoo7SlARM6L0Q3vLQxQrSgqwEPbdk.webp'
         ],
         [
             "user_id" => 1,

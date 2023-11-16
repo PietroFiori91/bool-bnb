@@ -12,6 +12,9 @@ video {
     outline: none; 
 }
 
+.gift {
+    width: 800px;
+}
 
 video::-webkit-media-controls {
     display:none !important;
@@ -119,7 +122,31 @@ button.btn {
     background-color: #001632;
 }
 
-a {
+button a {
     // background-color: transparent;
-    color: #001632;
+    color: white;
+    text-decoration: none;
+
+    
+}
+
+.cont-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.form-check-label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.form-check-input {
+    margin-top: 10px;
 }

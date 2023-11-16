@@ -3,7 +3,7 @@
 @section('content')
     <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="container container-uno paggina " id="container-uno">
+        <div class="container  paggina" id="container-uno">
             <div class="row">
                 <div class="torna-home nav p-4">
                     <a class="text-decoration-none text-black" href="{{ route('admin.apartments.index') }}"><img
@@ -20,47 +20,35 @@
                     </div>
 
                     <div class="col-6 sotto-due">
-                        <video controls width="100%" autoplay muted>
+                        {{--<video controls width="100%" autoplay muted> 
                             <source class="d-block"
                                 src="https://stream.media.muscache.com/zFaydEaihX6LP01x8TSCl76WHblb01Z01RrFELxyCXoNek.mp4?v_q=high"
-                                type="video/mp4">
-                        </video>
+                                type="video/mp4"> 
+                        </video>--}}
+
+                        <div class="d-block">
+                            <img class="gift img-fluid" width="100%" src="{{ asset('assets/img/ezgif.com-video-to-gif.gif') }}" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="d-flex align-items-end  avanti justify-content-end btn-avanti">
-                {{-- <button class="btn btn-link  m-5 "><a class="text-decoration-none text-black"
-                        href="{{ route('admin.apartments.index') }}">iIndietro</a></button> --}}
-                <button type="button" class="btn btn-dark m-5 fs-4" onclick="mostraSecondaSezione()">Avanti</button>
+                <button type="button" class="btn btn-dark m-5 fs-4" ><a href="#seconda-sezione">Avanti</a></button>
             </div>
-            <script>
-                function mostraSecondaSezione() {
-                    document.querySelector('.container-uno').style.display = 'none';
-                    document.querySelector('.seconda-sezione').style.display = 'block';
-                }
-            </script>
         </div>
 
 
 
-
-
-
-
-
-
-
-
-        <div class="container seconda-sezione cont-2 paggina " id="seconda-sezione">
-            <div class="row text-center  d-flex ">
-                <h3 class=" d-flex justify-content-center">Quale di queste opzioni descrive meglio il tuo alloggio?</h3>
+        <div class="container cont-2 paggina" id="seconda-sezione">
+            <div class="row text-center d-flex">
+                <h3 class="d-flex justify-content-center">Quale di queste opzioni descrive meglio il tuo alloggio?</h3>
                 @foreach ($services as $service)
                     <div class="mb-3 col-3 p-2 form-check-inline d-flex justify-content-center align-items-center">
-                        <label class="form-check-label" for="service_{{ $service->id }}"><i
-                                class="fa-solid {{ $service->icon }}"></i> {{ $service->name }}</label>
-                        <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
-                            id="flexCheckDefault">
+                        <label class="form-check-label" for="service_{{ $service->id }}">
+                            <i class="fa-solid {{ $service->icon }}"></i> {{ $service->name }}
+                            <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}" id="flexCheckDefault">
+                        </label>
                     </div>
                 @endforeach
                 <div class="mb-3">
@@ -68,33 +56,13 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-
-
-                <script>
-                    function mostraTerzaSezione() {
-                        document.querySelector('.cont-2').style.display = 'none';
-                        document.querySelector('.terza-sezione').style.display = 'block';
-                    }
-
-                    function scrollToSecondaSezione() {
-                        var secondaSezione = document.getElementById('container-uno');
-                        secondaSezione.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                </script>
-
-                <div class="d-flex align-items-end btn-sotto  justify-content-between">
-                    <button class="btn btn-link d-flex  align-items-end m-5 "><a class="text-decoration-none text-black"
-                            href="#" getElementById()>Indietro</a></button>
-
-
-
-
-
-
-                    <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end"
-                        onclick="mostraTerzaSezione()">Avanti</button>
+                <div class="d-flex align-items-end btn-sotto justify-content-between">
+                    <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end">
+                        <a href="#container-uno">Indietro</a>
+                    </button>
+                    <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end">
+                        <a href="#terza-sezione">Avanti</a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -107,8 +75,7 @@
 
 
 
-
-        <div class=" paggina container-img-form" id="ultima-sezione">
+        <div class="container paggina container-img-form" id="terza-sezione">
             <di class="container terza-sezione ">
                 <div class="row">
                     <div class="text-center p-5">
@@ -127,33 +94,11 @@
                     </div>
                 </div>
 
-                <script>
-                    function mostraQuartaSezione() {
-                        document.querySelector('.container-img-form').style.display = 'none';
-                        document.querySelector('.Quarta-sezione').style.display = 'block';
-                    }
-
-                    function scrollToSecondaSezione() {
-                        var secondaSezione = document.getElementById('seconda-sezione');
-                        secondaSezione.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                </script>
-
                 <div class="d-flex align-items-end btn-sotto  justify-content-between">
-
-
-
-
-
-
-                    <button class="btn btn-link d-flex align-items-end m-5">
-                        <a class="text-decoration-none text-black" href="#"
-                            onclick="scrollToSecondaSezione()">Indietro</a>
-                    </button>
-                    <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end"
-                        onclick="mostraQuartaSezione()">Avanti</button>
+                    <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end">
+                        <a href="#seconda-sezione">Indietro</a></button>
+                        <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end">
+                            <a href="#Quarta-sezione">Avanti</a></button>
                 </div>
         </div>
 
@@ -163,8 +108,8 @@
 
 
 
-        <div>
-            <div class=" container container-dati Quarta-sezione ">
+        
+            <div class=" container container-dati Quarta-sezione " id="Quarta-sezione" >
                 <div class="row">
                     <div class="mb-3">
                         <label class="form-label">Nome della abitazione: </label>
@@ -253,40 +198,21 @@
                         </div>
                     </div>
 
-                    <button class="btn">Salva</button>
+                    
                 </div>
+            </div>
+            <div class="d-flex align-items-end btn-sotto  justify-content-between">
+                <button class="btn btn-dark m-5 fs-4 d-flex align-items-end "><a class="text-decoration-none "
+                        href="#terza-sezione" >Indietro</a></button>
+                {{-- <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end"
+                    onclick="mostraCuintoSezione()">Avanti</button> --}}
+                    <button class="btn btn-dark m-5 fs-4 d-flex align-items-end">Salva</button>
             </div>
         </div>
 
 
 
-
-        <script>
-            function mostraCuintoSezione() {
-                document.querySelector('.Quarta-sezione').style.display = 'none';
-                document.querySelector('.Cuinto-sezione').style.display = 'block';
-            }
-
-            function scrollToSecondaSezione() {
-                var secondaSezione = document.getElementById('ultima-sezione');
-                secondaSezione.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        </script>
-
-        <div class="d-flex align-items-end btn-sotto  justify-content-between">
-           <a
-                    class="text-decoration-none">iIndietro</a>
-
-
-
-            <button class="btn btn-link d-flex  align-items-end m-5 "><a class="text-decoration-none text-black"
-                    href="#" onclick="scrollToSecondaSezione()">Indietro</a></button>
-            {{-- <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end"
-                onclick="mostraCuintoSezione()">Avanti</button> --}}
-        </div>
-        </div>
+        
 
     </form>
 @endsection

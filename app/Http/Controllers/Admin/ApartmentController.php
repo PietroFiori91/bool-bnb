@@ -25,6 +25,10 @@ class ApartmentController extends Controller
         $apartments = Apartment::all();
         $services = Service::all();
 
+
+        $query = request()->query();
+        // dd($query);
+
         // indirizza i nostri dati alla view index
         return view("admin.apartments.index", ["apartments" => $apartments], ['services' => $services]);
     }
