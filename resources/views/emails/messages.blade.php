@@ -23,7 +23,7 @@
                                 </h2>
                                 <div id="flush-collapse{{ $i }}" class="accordion-collapse collapse"
                                     data-bs-parent="accordionFlush">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body d-flex flex-column-reverse">
 
                                             @foreach ($apartment->messages as $message)
                                                 <div class="table-responsive col-12">
