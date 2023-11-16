@@ -20,10 +20,10 @@
                     </div>
 
                     <div class="col-6 sotto-due">
-                        {{--<video controls width="100%" autoplay muted> 
+                        {{--<video controls width="100%" autoplay muted>
                             <source class="d-block"
                                 src="https://stream.media.muscache.com/zFaydEaihX6LP01x8TSCl76WHblb01Z01RrFELxyCXoNek.mp4?v_q=high"
-                                type="video/mp4"> 
+                                type="video/mp4">
                         </video>--}}
 
                         <div class="d-block">
@@ -108,7 +108,7 @@
 
 
 
-        
+
             <div class=" container container-dati Quarta-sezione " id="Quarta-sezione" >
                 <div class="row">
                     <div class="mb-3">
@@ -198,9 +198,69 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
             </div>
+
+
+        </div>
+
+        <div class="d-flex align-items-end  avanti justify-content-between btn-avanti">
+            <button class="btn btn-link  m-5 "><a  class="text-decoration-none text-black" href="{{ route('admin.apartments.index') }}">iIndietro</a></button>
+            <button type="button" class="btn btn-dark m-5 fs-4" onclick="mostraSecondaSezione()">Avanti</button>
+        </div>
+        <script>
+            function mostraSecondaSezione() {
+                document.querySelector('.container-uno').style.display = 'none';
+                document.querySelector('.seconda-sezione').style.display = 'block';
+            }
+        </script>
+
+
+
+
+
+
+
+
+    </div class='"paggina-pena  '>
+        <div class="container seconda-sezione cont-2">
+            <div class="row text-center d-flex " >
+                <h3 class=" d-flex justify-content-center">Quale di queste opzioni descrive meglio il tuo alloggio?</h3>
+                @foreach ($services as $service)
+                    <div class="mb-3 col-3 p-2 form-check-inline">
+                        <label class="form-check-label" for="service_{{ $service->id }}"><i class="fa-solid {{ $service->icon }}"></i>  {{ $service->name }}</label>
+
+                        <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
+                            id="flexCheckDefault">
+                    </div>
+                    {{-- <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group ">
+                        <input  name="services[]" type="checkbox" class="btn-check col-2" id="btncheck1" autocomplete="off" value="{{ $service->id }}">
+                        <label class="btn btn-outline-primary "  for="service_{{ $service->id }}">{{ $service->name }}  <i class="fa-solid {{ $service->icon }}"></i></label>
+                    </div> --}}
+                @endforeach
+                <div class="mb-3">
+                    @error('services')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+
+            </div>
+
+
+    <script>
+        function mostraTerzaSezione() {
+            document.querySelector('.cont-2').style.display = 'none';
+            document.querySelector('.terza-sezione').style.display = 'block';
+        }
+    </script>
+
+<div class="d-flex align-items-end btn-sotto  justify-content-between">
+    <button class="btn btn-link d-flex  align-items-end m-5 "><a  class="text-decoration-none text-black" href="{{ route('admin.apartments.index') }}">iIndietro</a></button>
+    <button type="button" class="btn btn-dark m-5 fs-4 d-flex align-items-end" onclick="mostraTerzaSezione()">Avanti</button>
+</div>
+</div>
             <div class="d-flex align-items-end btn-sotto  justify-content-between">
                 <button class="btn btn-dark m-5 fs-4 d-flex align-items-end "><a class="text-decoration-none "
                         href="#terza-sezione" >Indietro</a></button>
@@ -212,7 +272,7 @@
 
 
 
-        
+
 
     </form>
 @endsection

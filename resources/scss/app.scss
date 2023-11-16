@@ -1,9 +1,16 @@
 @use"./partials/show.scss";
 @use"./partials/index.scss";
 @use"./partials/create.scss";
+@use"./partials/messages.scss";
+@use"./partials/dashboard.scss";
 @use "@fortawesome/fontawesome-free/css/all.min.css";
 @import "bootstrap";
 
 
 
-
+.navbar {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    color: #001632;
+}
