@@ -24,11 +24,11 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel" style="width:100px ">
-                        <img style="width:100%" src="/assets/img/Risorsa 8port creatt.png" alt="logo full" />
+                        <img style="width:100%" src="/assets/img/Risorsa 4port creatt.png" alt="logo full" />
                     </div>
                 </a>
 
